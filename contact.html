@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – CTPV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="transition.js" defer></script>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      <line x1="1"  y1="21" x2="8"  y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="1"  x2="21" y2="8"  stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">CTPV</div>
+      <div class="brand-sub">Club de Tir Police Varois</div>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="presentation.html">Le Club</a></li>
+    <li><a href="maps.html">Nos Sites</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">Nous écrire</div>
+    <h1>Contactez-nous</h1>
+    <p>Une question, une demande d'adhésion ou d'information ? Nous répondons dans les meilleurs délais.</p>
+  </div>
+
+  <!-- ═══ CONTACT ═══ -->
+  <div class="section">
+    <div class="contact-layout">
+
+      <!-- Info -->
+      <div>
+        <div class="contact-info-card">
+          <h3>Informations de contact</h3>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="bi bi-telephone-fill"></i></div>
+            <div>
+              <div class="contact-info-label">Téléphone</div>
+              <div class="contact-info-value">
+                <a href="tel:0950779753">09.50.77.97.53</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="bi bi-envelope-fill"></i></div>
+            <div>
+              <div class="contact-info-label">Adresse email</div>
+              <div class="contact-info-value">
+                <a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="bi bi-clock-fill"></i></div>
+            <div>
+              <div class="contact-info-label">Horaires d'accueil</div>
+              <div class="contact-info-value">Samedi : 08h00 – 15h30</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <div class="contact-info-label">Site CTPV 3 – Le Revest</div>
+              <div class="contact-info-value">Chemin de Tourris<br>83200 Le Revest-les-Eaux</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <div class="contact-info-label">Site CTPV 4 – Toulon (siège)</div>
+              <div class="contact-info-value">245 avenue des Meuniers<br>83200 Toulon</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info adhésion -->
+        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:1.5rem;margin-top:1.5rem;">
+          <h3 style="font-size:1rem;margin-bottom:0.75rem;color:var(--gold);display:flex;align-items:center;gap:0.5rem;">
+            <i class="bi bi-info-circle-fill"></i> Comment adhérer ?
+          </h3>
+          <p style="color:var(--muted);font-size:0.85rem;line-height:1.8;">
+            Pour rejoindre le CTPV, vous devez :<br>
+            <br>
+            <strong style="color:var(--text);">1.</strong> Nous contacter par email ou téléphone<br>
+            <strong style="color:var(--text);">2.</strong> Venir sur l'un de nos stands le samedi<br>
+            <strong style="color:var(--text);">3.</strong> Fournir une pièce d'identité valide<br>
+            <strong style="color:var(--text);">4.</strong> Régler la cotisation annuelle<br>
+            <strong style="color:var(--text);">5.</strong> Obtenir ou renouveler votre licence FFTIR
+          </p>
+        </div>
+
+        <!-- Affiliations -->
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <p style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Affiliations</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span class="badge gold">FFTIR</span>
+            <span class="badge gold">IPSC</span>
+            <span class="badge gold">Ligue PACA</span>
+            <span class="badge">Parcours homologué</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="contact-form-card">
+        <h3>Envoyer un message</h3>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.fr" required>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
+          </div>
+          <div class="form-group">
+            <label for="sujet">Sujet *</label>
+            <select id="sujet" name="sujet" required>
+              <option value="" disabled selected>Sélectionnez un sujet</option>
+              <option value="adhesion">Demande d'adhésion</option>
+              <option value="information">Demande d'information</option>
+              <option value="initiation">Cours d'initiation</option>
+              <option value="reservation">Réservation de créneau</option>
+              <option value="competition">Compétitions & calendrier</option>
+              <option value="partenariat">Partenariat</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Décrivez votre demande..." required></textarea>
+          </div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1.25rem;">
+            * Champs obligatoires. Vos données sont utilisées uniquement pour répondre à votre demande.
+          </p>
+          <button type="submit" class="btn-submit">
+            <i class="bi bi-send-fill"></i>&ensp;Envoyer le message
+          </button>
+          <div class="form-success" id="form-success">
+            <i class="bi bi-check-circle-fill"></i>&ensp;Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.
+          </div>
+          <div id="form-error" style="display:none;background:rgba(201,76,76,0.1);border:1px solid rgba(201,76,76,0.3);color:#e08a8a;padding:1rem;border-radius:6px;text-align:center;margin-top:1rem;font-size:0.9rem;">
+            <i class="bi bi-exclamation-circle-fill"></i>&ensp;Veuillez remplir tous les champs obligatoires.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ FAQ ═══ -->
+  <div style="background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2>Questions fréquentes</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div style="max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;">
+
+        <details style="background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            Faut-il avoir une expérience préalable pour rejoindre le club ?
+            <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
+          </summary>
+          <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
+            Pas du tout ! Le CTPV accueille les débutants complets. Nos moniteurs agréés proposent des cours d'initiation adaptés à tous les niveaux. Le seul prérequis est d'être majeur (18 ans révolus).
+          </div>
+        </details>
+
+        <details style="background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            Dois-je avoir ma propre arme pour pratiquer ?
+            <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
+          </summary>
+          <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
+            Non, le club met du matériel à disposition pour les séances d'initiation. Pour pratiquer régulièrement, il est ensuite conseillé de s'équiper progressivement, et nos membres peuvent vous guider dans ce choix.
+          </div>
+        </details>
+
+        <details style="background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            Quel est le coût de la licence FFTIR ?
+            <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
+          </summary>
+          <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
+            La licence est délivrée par la Fédération Française de Tir. Son coût varie selon la catégorie (adulte, jeune, etc.). Contactez-nous pour connaître le montant exact de la cotisation club + licence pour la saison en cours.
+          </div>
+        </details>
+
+        <details style="background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            Le club est-il ouvert les jours fériés ?
+            <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
+          </summary>
+          <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
+            En règle générale, nos stands sont ouverts le samedi de 08h00 à 15h30. Les jours fériés tombant un samedi peuvent faire l'objet de fermetures exceptionnelles. Contactez-nous pour vérifier en cas de doute.
+          </div>
+        </details>
+
+        <details style="background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            Le club participe-t-il à des compétitions ?
+            <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
+          </summary>
+          <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
+            Oui ! Le CTPV participe aux championnats régionaux PACA et aux compétitions nationales organisées par la FFTIR. Tous les licenciés peuvent prendre part à ces épreuves selon leur niveau et leur discipline.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
+      <div class="brand-sub" style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);">Club de Tir Police Varois</div>
+      <p>Club de tir sportif affilié à la Fédération Française de Tir. Présent sur deux sites dans le Var depuis plus de 50 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
+        <li><a href="maps.html">Toulon (83200)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
+    <div class="footer-affiliations">
+      <span class="affil-badge">FFTIR</span>
+      <span class="affil-badge">IPSC</span>
+      <span class="affil-badge">Ligue PACA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // FAQ toggle icon
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const icon = d.querySelector('.faq-icon');
+      if (d.open) {
+        icon.classList.remove('bi-plus-circle-fill');
+        icon.classList.add('bi-dash-circle-fill');
+      } else {
+        icon.classList.remove('bi-dash-circle-fill');
+        icon.classList.add('bi-plus-circle-fill');
+      }
+    });
+  });
+
+  // Form
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(f => { if (!f.value.trim()) valid = false; });
+    if (!valid) {
+      document.getElementById('form-error').style.display = 'block';
+      document.getElementById('form-success').style.display = 'none';
+      return;
+    }
+    document.getElementById('form-error').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    form.reset();
+  });
+</script>
+</body>
+</html>

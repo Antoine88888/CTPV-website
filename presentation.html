@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présentation – CTPV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="transition.js" defer></script>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      <line x1="1"  y1="21" x2="8"  y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="1"  x2="21" y2="8"  stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">CTPV</div>
+      <div class="brand-sub">Club de Tir Police Varois</div>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="presentation.html" class="active">Le Club</a></li>
+    <li><a href="maps.html">Nos Sites</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">À propos</div>
+    <h1>Présentation du Club</h1>
+    <p>Qui sommes-nous ? Notre histoire, nos valeurs et nos disciplines.</p>
+  </div>
+
+  <!-- ═══ PRÉSENTATION PRINCIPALE ═══ -->
+  <div class="section">
+    <div class="pres-layout">
+
+      <div class="pres-text">
+        <span class="section-label">Notre identité</span>
+        <h2>Le Club de Tir Police Varois</h2>
+        <p>
+          Le <strong>CTPV</strong> – Club de Tir Police Varois – est une association sportive affiliée à la
+          <strong>Fédération Française de Tir (FFTIR)</strong>, dédiée à la pratique du tir sportif
+          dans le Var. Fondé et animé par des passionnés, le club accueille tireurs débutants
+          et confirmés dans une ambiance conviviale et sécurisée.
+        </p>
+        <p>
+          Nous disposons de <strong>deux sites de tir</strong> complémentaires : le stand du
+          Revest-les-Eaux pour les longues distances (jusqu'à 300 m) et le stand de Toulon pour
+          le tir aux armes de poing (25 m). Ces installations homologuées permettent la pratique
+          de nombreuses disciplines officielles FFTIR.
+        </p>
+        <div class="highlight-box">
+          « Le tir sportif est une discipline exigeante qui allie concentration, maîtrise technique
+          et esprit d'équipe. Rejoignez-nous pour vivre cette passion. »
+        </div>
+        <p>
+          Ouverts <strong>chaque samedi de 08h00 à 15h30</strong>, nos stands accueillent aussi bien les
+          entraînements réguliers que les compétitions officielles. Nos moniteurs agréés dispensent
+          des cours d'initiation et de perfectionnement pour tous les niveaux.
+        </p>
+        <div class="badge-row">
+          <span class="badge gold">FFTIR</span>
+          <span class="badge gold">IPSC</span>
+          <span class="badge gold">Ligue PACA</span>
+          <span class="badge">Parcours homologué</span>
+          <span class="badge">Moniteurs agréés</span>
+          <span class="badge">Var (83)</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="pres-img" style="overflow:hidden;border-radius:8px;border:1px solid var(--border);margin-bottom:2rem;min-height:unset;">
+          <img src="https://picsum.photos/seed/ctpv-club/560/360" alt="Club de Tir Police Varois" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+
+        <!-- Disciplines détaillées -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.75rem;">
+          <h3 style="margin-bottom:1.25rem;font-size:1.1rem;">Nos disciplines en détail</h3>
+
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="display:flex;align-items:flex-start;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+              <i class="bi bi-bullseye" style="font-size:1.4rem;color:var(--gold);min-width:28px;padding-top:0.1rem;"></i>
+              <div>
+                <strong style="color:var(--white);font-family:'Rajdhani',sans-serif;">Tir au pistolet – 25 m</strong>
+                <p style="color:var(--muted);font-size:0.83rem;margin-top:0.25rem;">Tir de précision aux armes de poing sur cible à 25 mètres. Discipline officielle FFTIR.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+              <i class="bi bi-crosshair" style="font-size:1.4rem;color:var(--gold);min-width:28px;padding-top:0.1rem;"></i>
+              <div>
+                <strong style="color:var(--white);font-family:'Rajdhani',sans-serif;">Carabine – 50 à 300 m</strong>
+                <p style="color:var(--muted);font-size:0.83rem;margin-top:0.25rem;">Armes d'épaule sur nos stands longue distance du Revest. Plusieurs distances disponibles.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+              <i class="bi bi-crosshair2" style="font-size:1.4rem;color:var(--gold);min-width:28px;padding-top:0.1rem;"></i>
+              <div>
+                <strong style="color:var(--white);font-family:'Rajdhani',sans-serif;">Armes à canon lisse</strong>
+                <p style="color:var(--muted);font-size:0.83rem;margin-top:0.25rem;">Cours dédiés aux fusils de chasse et armes à canon lisse dans un cadre réglementé.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:1rem;">
+              <i class="bi bi-shield-fill" style="font-size:1.4rem;color:var(--gold);min-width:28px;padding-top:0.1rem;"></i>
+              <div>
+                <strong style="color:var(--white);font-family:'Rajdhani',sans-serif;">TAR – Tir Aux Réglementaires</strong>
+                <p style="color:var(--muted);font-size:0.83rem;margin-top:0.25rem;">Parcours de tir homologué aux armes réglementaires. Ouvert aux professionnels et aux civils qualifiés.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ HISTORIQUE ═══ -->
+  <div style="background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">Historique</span>
+        <h2>Notre parcours</h2>
+        <p>Plus de 50 ans d'histoire et de passion pour le tir sportif dans le Var.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div style="max-width:680px;margin:0 auto;">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-building-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Création du club</h4>
+              <p>Fondation du Club de Tir Police Varois dans le département du Var. Les premiers stands de tir voient le jour pour les forces de l'ordre et les amateurs.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-award-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Affiliation FFTIR</h4>
+              <p>Le club s'affilie officiellement à la Fédération Française de Tir, ouvrant la voie aux compétitions officielles et aux formations agréées.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-geo-alt-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Ouverture du site du Revest</h4>
+              <p>Installation du stand CTPV 3 au Chemin de Tourris, Le Revest-les-Eaux. Un équipement longue distance de 50 à 300 mètres unique dans le département.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-buildings-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Site de Toulon</h4>
+              <p>Ouverture du stand CTPV 4 au 245 avenue des Meuniers à Toulon, siège administratif du club, dédié au tir de précision à 25 mètres.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-check-circle-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Homologation Parcours de Tir</h4>
+              <p>Le club obtient l'homologation officielle pour les parcours de tir réglementaire, renforçant son statut de référence dans la région PACA.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="bi bi-star-fill" style="font-size:1rem;color:var(--gold);"></i></div>
+            <div class="timeline-body">
+              <h4>Aujourd'hui</h4>
+              <p>Le CTPV continue de former et d'accueillir des passionnés de tir sportif, tout en participant activement aux compétitions régionales et nationales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ VALEURS ═══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Nos valeurs</span>
+      <h2>Ce qui nous anime</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="disc-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+      <div class="disc-card">
+        <div class="disc-icon"><i class="bi bi-shield-fill"></i></div>
+        <h3>Sécurité</h3>
+        <p>La sécurité est notre priorité absolue. Nos stands respectent les normes les plus strictes et tous nos tireurs sont formés aux règles de sécurité.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon"><i class="bi bi-people-fill"></i></div>
+        <h3>Convivialité</h3>
+        <p>Le CTPV est avant tout une famille. Nous cultivons l'esprit d'équipe, le partage et la bonne humeur sur et hors des stands.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon"><i class="bi bi-graph-up-arrow"></i></div>
+        <h3>Progression</h3>
+        <p>Nous accompagnons chaque tireur dans sa progression, du débutant au compétiteur, avec des formations adaptées et un suivi personnalisé.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon"><i class="bi bi-trophy-fill"></i></div>
+        <h3>Excellence</h3>
+        <p>Nous visons l'excellence sportive et participons aux compétitions officielles FFTIR pour représenter le Var au niveau national.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(201,168,76,0.03) 100%);border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);text-align:center;padding:4rem 2rem;">
+    <h2 style="margin-bottom:0.75rem;">Prêt à nous rejoindre ?</h2>
+    <p style="color:var(--muted);max-width:480px;margin:0 auto 2rem;">Contactez-nous ou venez directement sur l'un de nos stands le samedi matin. Nos membres seront ravis de vous accueillir.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn-primary">Nous contacter</a>
+      <a href="maps.html" class="btn-outline">Voir nos sites</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
+      <div class="brand-sub" style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);">Club de Tir Police Varois</div>
+      <p>Club de tir sportif affilié à la Fédération Française de Tir. Présent sur deux sites dans le Var depuis plus de 50 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
+        <li><a href="maps.html">Toulon (83200)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
+    <div class="footer-affiliations">
+      <span class="affil-badge">FFTIR</span>
+      <span class="affil-badge">IPSC</span>
+      <span class="affil-badge">Ligue PACA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

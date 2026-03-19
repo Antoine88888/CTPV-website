@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie – CTPV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.94);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+      position: relative;
+      max-width: 860px;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid var(--border);
+      color: var(--white);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: var(--danger); }
+    .lightbox-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+    .lightbox-caption {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .lightbox-caption h4 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .lightbox-caption p  { font-size: 0.85rem; color: var(--muted); }
+
+    .gallery-upload-hint {
+      background: rgba(201,168,76,0.05);
+      border: 1px dashed rgba(201,168,76,0.3);
+      border-radius: 8px;
+      padding: 1.25rem 1.75rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .gallery-upload-hint i { font-size: 1.4rem; color: var(--gold); flex-shrink:0; }
+    .gallery-upload-hint strong { color: var(--gold); }
+    .gallery-upload-hint code {
+      background: var(--dark3);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+  </style>
+  <script src="transition.js" defer></script>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      <line x1="1"  y1="21" x2="8"  y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="1"  x2="21" y2="8"  stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">CTPV</div>
+      <div class="brand-sub">Club de Tir Police Varois</div>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="presentation.html">Le Club</a></li>
+    <li><a href="maps.html">Nos Sites</a></li>
+    <li><a href="galerie.html" class="active">Galerie</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">Photos & médias</div>
+    <h1>Galerie du Club</h1>
+    <p>Moments de vie, compétitions et installations du CTPV en images.</p>
+  </div>
+
+  <!-- ═══ GALERIE ═══ -->
+  <div class="section">
+
+    <!-- Filtres -->
+    <div class="gallery-filter">
+      <button class="filter-btn active" data-filter="all">
+        <i class="bi bi-grid-3x3-gap-fill"></i> Tout
+      </button>
+      <button class="filter-btn" data-filter="stands">
+        <i class="bi bi-buildings-fill"></i> Nos stands
+      </button>
+      <button class="filter-btn" data-filter="competition">
+        <i class="bi bi-trophy-fill"></i> Compétitions
+      </button>
+      <button class="filter-btn" data-filter="vie">
+        <i class="bi bi-people-fill"></i> Vie du club
+      </button>
+      <button class="filter-btn" data-filter="formation">
+        <i class="bi bi-mortarboard-fill"></i> Formations
+      </button>
+    </div>
+
+    <!-- Grille -->
+    <div class="gallery-grid" id="gallery">
+
+      <!-- Stands -->
+      <div class="gallery-item" data-cat="stands" data-title="Stand du Revest – Vue générale" data-desc="Le stand CTPV 3 au Chemin de Tourris, Le Revest-les-Eaux." data-src="https://picsum.photos/seed/stand-revest/800/600">
+        <img src="https://picsum.photos/seed/stand-revest/600/450" alt="Stand du Revest" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Stand du Revest – Vue générale</div></div>
+      </div>
+
+      <div class="gallery-item tall" data-cat="stands" data-title="Ligne de tir 300 m" data-desc="La ligne de tir longue distance sur notre stand du Revest." data-src="https://picsum.photos/seed/stand-300m/800/1200">
+        <img src="https://picsum.photos/seed/stand-300m/600/900" alt="Ligne de tir 300m" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Ligne de tir 300 m</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="stands" data-title="Stand de Toulon" data-desc="Le stand CTPV 4, 245 avenue des Meuniers, Toulon." data-src="https://picsum.photos/seed/stand-toulon/800/600">
+        <img src="https://picsum.photos/seed/stand-toulon/600/450" alt="Stand de Toulon" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Stand de Toulon</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="stands" data-title="Poste de tir pistolet 25 m" data-desc="Un des postes de tir à pistolet sur le stand de Toulon." data-src="https://picsum.photos/seed/stand-pistol/800/600">
+        <img src="https://picsum.photos/seed/stand-pistol/600/450" alt="Poste pistolet 25m" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Poste pistolet 25 m</div></div>
+      </div>
+
+      <!-- Compétitions -->
+      <div class="gallery-item" data-cat="competition" data-title="Championnat régional PACA 2024" data-desc="Nos tireurs lors du championnat régional PACA 2024." data-src="https://picsum.photos/seed/comp-paca/800/600">
+        <img src="https://picsum.photos/seed/comp-paca/600/450" alt="Championnat PACA 2024" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Championnat régional PACA 2024</div></div>
+      </div>
+
+      <div class="gallery-item tall" data-cat="competition" data-title="Podium – Championnat régional" data-desc="Nos licenciés sur le podium du championnat régional." data-src="https://picsum.photos/seed/comp-podium/800/1200">
+        <img src="https://picsum.photos/seed/comp-podium/600/900" alt="Podium championnat" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Podium – Championnat régional</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="competition" data-title="Compétition FFTIR – Carabine" data-desc="Épreuve de tir à la carabine lors d'une compétition officielle." data-src="https://picsum.photos/seed/comp-rifle/800/600">
+        <img src="https://picsum.photos/seed/comp-rifle/600/450" alt="Compétition carabine" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Compétition FFTIR – Carabine</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="competition" data-title="Remise des trophées 2024" data-desc="Cérémonie de remise des récompenses de fin de saison." data-src="https://picsum.photos/seed/comp-awards/800/600">
+        <img src="https://picsum.photos/seed/comp-awards/600/450" alt="Remise trophées" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Remise des trophées 2024</div></div>
+      </div>
+
+      <!-- Vie du club -->
+      <div class="gallery-item" data-cat="vie" data-title="Journée portes ouvertes" data-desc="Une journée portes ouvertes au CTPV pour découvrir le tir sportif." data-src="https://picsum.photos/seed/club-open/800/600">
+        <img src="https://picsum.photos/seed/club-open/600/450" alt="Journée portes ouvertes" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Journée portes ouvertes</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="vie" data-title="Assemblée générale 2024" data-desc="Rassemblement annuel des membres du club." data-src="https://picsum.photos/seed/club-ag/800/600">
+        <img src="https://picsum.photos/seed/club-ag/600/450" alt="Assemblée générale" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Assemblée générale 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="vie" data-title="Repas de club" data-desc="Le traditionnel repas convivial des licenciés du CTPV." data-src="https://picsum.photos/seed/club-repas/800/600">
+        <img src="https://picsum.photos/seed/club-repas/600/450" alt="Repas de club" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Repas de club</div></div>
+      </div>
+
+      <!-- Formations -->
+      <div class="gallery-item" data-cat="formation" data-title="Cours d'initiation" data-desc="Séance d'initiation au tir encadrée par nos moniteurs agréés." data-src="https://picsum.photos/seed/form-init/800/600">
+        <img src="https://picsum.photos/seed/form-init/600/450" alt="Cours d'initiation" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Cours d'initiation</div></div>
+      </div>
+
+      <div class="gallery-item tall" data-cat="formation" data-title="Formation TAR" data-desc="Formation au tir aux armes réglementaires sur parcours homologué." data-src="https://picsum.photos/seed/form-tar/800/1200">
+        <img src="https://picsum.photos/seed/form-tar/600/900" alt="Formation TAR" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Formation TAR</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="formation" data-title="Stage jeunes tireurs" data-desc="Stage d'initiation spécialement dédié aux jeunes tireurs." data-src="https://picsum.photos/seed/form-youth/800/600">
+        <img src="https://picsum.photos/seed/form-youth/600/450" alt="Stage jeunes tireurs" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-caption"><i class="bi bi-zoom-in"></i> Stage jeunes tireurs</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div style="text-align:center;padding:1rem 2rem 5rem;">
+    <p style="color:var(--muted);margin-bottom:1.25rem;">Vous avez des photos du club à partager ? Contactez-nous !</p>
+    <a href="contact.html" class="btn-outline">
+      <i class="bi bi-camera-fill"></i>&ensp;Nous envoyer vos photos
+    </a>
+  </div>
+
+</div>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close" aria-label="Fermer">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <img class="lightbox-img" id="lb-img" src="" alt="">
+    <div class="lightbox-caption">
+      <h4 id="lb-title"></h4>
+      <p  id="lb-desc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
+      <div class="brand-sub" style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);">Club de Tir Police Varois</div>
+      <p>Club de tir sportif affilié à la Fédération Française de Tir. Présent sur deux sites dans le Var depuis plus de 50 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
+        <li><a href="maps.html">Toulon (83200)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
+    <div class="footer-affiliations">
+      <span class="affil-badge">FFTIR</span>
+      <span class="affil-badge">IPSC</span>
+      <span class="affil-badge">Ligue PACA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Gallery filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const lbTitle  = document.getElementById('lb-title');
+  const lbDesc   = document.getElementById('lb-desc');
+  const lbClose  = document.getElementById('lb-close');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      lbImg.src        = item.dataset.src || item.querySelector('img').src;
+      lbImg.alt        = item.dataset.title || '';
+      lbTitle.textContent = item.dataset.title || '';
+      lbDesc.textContent  = item.dataset.desc  || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>

@@ -613,6 +613,7 @@ h3 { font-size: 1.3rem; font-weight: 600; }
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+  color: var(--gold);
   flex-shrink: 0;
 }
 .contact-info-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -877,10 +878,19 @@ body.page-out {
     left: 0; right: 0;
     background: rgba(13,15,20,0.98);
     border-bottom: 1px solid var(--border);
-    padding: 1rem;
+    padding: 0.75rem;
     gap: 0.25rem;
+    overflow: hidden;
   }
-  .nav-links.open a { padding: 0.75rem 1rem; border-radius: 6px; }
+  .nav-links.open a {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    /* Empêche le fond actif de déborder */
+    display: block;
+    position: static;
+  }
+  /* Supprime le trait souligné en mobile (il déborderait sur l'item suivant) */
+  .nav-links.open a.active::after { display: none; }
   .hamburger { display: flex; }
   .stat-bar-inner { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }

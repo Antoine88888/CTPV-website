@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciplines – CTPV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="transition.js" defer></script>
+  <style>
+    /* ── Discipline hero cards ── */
+    .disc-hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .disc-big-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .disc-big-card:hover { border-color: var(--gold-dark); transform: translateY(-3px); }
+    .disc-big-card.featured { border-color: rgba(201,168,76,0.5); }
+    .disc-big-card.featured .disc-card-header { background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.04) 100%); }
+    .disc-card-header {
+      padding: 1.75rem 1.5rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .disc-card-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .disc-card-title-wrap { flex: 1; }
+    .disc-acronym {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .disc-card-title-wrap h3 { font-size: 1.15rem; margin-bottom: 0.1rem; }
+    .disc-card-title-wrap p { font-size: 0.78rem; color: var(--muted); }
+    .disc-new-badge {
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      align-self: flex-start;
+      white-space: nowrap;
+    }
+    .disc-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .disc-card-body p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+    .disc-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .disc-tag {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.18rem 0.6rem;
+      border-radius: 3px;
+    }
+    .disc-specs {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .disc-spec-row {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .disc-spec-row i { color: var(--gold); font-size: 0.9rem; min-width: 16px; }
+
+    /* ── PR22 featured section ── */
+    .pr22-section {
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .pr22-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .pr22-img {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+    .pr22-img img { width: 100%; display: block; }
+    .pr22-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .pr22-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .pr22-stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .pr22-stat-label { font-size: 0.73rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    @media (max-width: 860px) {
+      .pr22-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .pr22-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .disc-card-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      <line x1="1"  y1="21" x2="8"  y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="1"  x2="21" y2="8"  stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">CTPV</div>
+      <div class="brand-sub">Club de Tir Police Varois</div>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="presentation.html">Le Club</a></li>
+    <li><a href="disciplines.html" class="active">Disciplines</a></li>
+    <li><a href="maps.html">Nos Sites</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">Tir sportif</div>
+    <h1>Nos Disciplines</h1>
+    <p>Du tir de précision classique à la longue distance, en passant par le Precision Rifle, le CTPV couvre un large spectre du tir sportif.</p>
+  </div>
+
+  <!-- ═══ GRILLE DISCIPLINES ═══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Vue d'ensemble</span>
+      <h2>Toutes nos disciplines</h2>
+      <p>Chaque discipline possède ses propres règles, matériels et niveaux de pratique. Nos moniteurs vous guident vers celle qui vous correspond.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="disc-hero-grid">
+
+      <!-- PR22 – Vedette -->
+      <div class="disc-big-card featured" id="pr22">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-crosshair2"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">PR22</div>
+            <h3>Precision Rifle .22 LR</h3>
+            <p>Carabine de précision – calibre .22 Long Rifle</p>
+          </div>
+          <span class="disc-new-badge"><i class="bi bi-star-fill"></i> Phare</span>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le <strong style="color:var(--white);">Precision Rifle .22 LR</strong> est une discipline de tir à longue distance
+            avec une carabine bolt-action en calibre .22 Long Rifle. L'objectif : atteindre des cibles de petite taille
+            à des distances variées, en tenant compte du vent, de la dérive et de la chute de balle.
+          </p>
+          <p>
+            Discipline en plein essor en France et en Europe, le PR22 combine exigence technique
+            (réglage de la lunette, lecture du vent, position de tir) et accessibilité — le .22LR
+            restant un calibre peu coûteux et peu percutant, idéal pour progresser.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 50 à 200 m (typiquement 100 m)</span></div>
+            <div class="disc-spec-row"><i class="bi bi-bullseye"></i><span>Cibles métal type KYL, IPSC, mini-porc…</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Carabine bolt-action ou semi-auto .22 LR, lunette</span></div>
+            <div class="disc-spec-row"><i class="bi bi-person-arms-up"></i><span>Positions : couché, assis, debout, standing</span></div>
+            <div class="disc-spec-row"><i class="bi bi-stopwatch-fill"></i><span>Exercices à temps ou libre selon le format</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">Bolt-action</span>
+            <span class="disc-tag">Semi-auto</span>
+            <span class="disc-tag">.22 LR</span>
+            <span class="disc-tag">Lunette</span>
+            <span class="disc-tag">Métal</span>
+            <span class="disc-tag">Stand Revest</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAR -->
+      <div class="disc-big-card" id="tar">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-shield-fill"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">TAR</div>
+            <h3>Tir Aux armes Réglementaires</h3>
+            <p>Parcours homologué FFTIR</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le TAR est une discipline fédérale pratiquée avec des armes de service réglementaires.
+            Elle est très prisée des professionnels de la sécurité (police, gendarmerie, agents armés)
+            souhaitant entretenir ou améliorer leur niveau, ainsi que des civils détenteurs légaux
+            d'armes de catégorie B.
+          </p>
+          <p>
+            Le parcours comprend des exercices de tir sur cibles silhouettes à différentes distances
+            et dans différentes positions, avec contraintes de temps. Le CTPV dispose d'un parcours
+            officiel homologué.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 5 à 25 m</span></div>
+            <div class="disc-spec-row"><i class="bi bi-bullseye"></i><span>Cibles silhouettes homologuées FFTIR</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Pistolet ou revolver réglementaire (9mm, .357…)</span></div>
+            <div class="disc-spec-row"><i class="bi bi-check-circle-fill"></i><span>Parcours homologué – compétitions officielles possibles</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">Pistolet</span>
+            <span class="disc-tag">9 mm</span>
+            <span class="disc-tag">.357 Mag</span>
+            <span class="disc-tag">Homologué</span>
+            <span class="disc-tag">Professionnel</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TSV -->
+      <div class="disc-big-card" id="tsv">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-lightning-fill"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">TSV</div>
+            <h3>Tir Sportif de Vitesse</h3>
+            <p>Précision et rapidité sur cibles métal</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le TSV (anciennement appelé tir rapide en double action) est une discipline qui associe
+            vitesse d'exécution et précision sur des cibles métalliques. Le tireur enchaîne les
+            engagements sur plusieurs cibles avec des contraintes de temps strictes.
+          </p>
+          <p>
+            Particulièrement dynamique et spectaculaire, le TSV est ouvert à tous les niveaux.
+            Il développe la gestion du stress, la coordination et la répétabilité du geste.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 5 à 15 m</span></div>
+            <div class="disc-spec-row"><i class="bi bi-stopwatch-fill"></i><span>Exercices minutés – engagement multiple</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Pistolet semi-automatique, calibres variés</span></div>
+            <div class="disc-spec-row"><i class="bi bi-person-fill"></i><span>Accessible débutants, très formateur</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">Pistolet</span>
+            <span class="disc-tag">Vitesse</span>
+            <span class="disc-tag">Métal</span>
+            <span class="disc-tag">Multi-cibles</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TLD -->
+      <div class="disc-big-card" id="tld">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-crosshair"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">TLD</div>
+            <h3>Tir Longue Distance</h3>
+            <p>Carabine – 100 à 300 mètres</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le TLD est la discipline reine des stands de plein air. Sur notre site du Revest-les-Eaux,
+            les tireurs s'expriment sur des cibles à 100, 200 et jusqu'à 300 mètres avec des carabines
+            de précision en calibres centraux (.308 Win, .223 Rem, 6.5 CM…).
+          </p>
+          <p>
+            La maîtrise du vent, de la dérive gyroscopique et du réglage optique est essentielle.
+            Le TLD est à la fois une école de rigueur et une invitation à la sérénité — chaque tir
+            est une équation à résoudre.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 100 / 200 / 300 m</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Carabine bolt-action, calibres centraux</span></div>
+            <div class="disc-spec-row"><i class="bi bi-wind"></i><span>Lecture du vent – gestion des corrections</span></div>
+            <div class="disc-spec-row"><i class="bi bi-map-fill"></i><span>Uniquement sur le stand du Revest (CTPV 3)</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">.308 Win</span>
+            <span class="disc-tag">.223 Rem</span>
+            <span class="disc-tag">6.5 CM</span>
+            <span class="disc-tag">Bolt-action</span>
+            <span class="disc-tag">Stand Revest</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pistolet 25m -->
+      <div class="disc-big-card" id="pistolet">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-bullseye"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">PST</div>
+            <h3>Tir au Pistolet – 25 m</h3>
+            <p>Discipline classique de précision</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le tir au pistolet à 25 mètres est l'une des disciplines historiques de la FFTIR.
+            Il se pratique sur cibles papier ou électroniques et récompense avant tout la régularité,
+            la concentration et la maîtrise de la détente.
+          </p>
+          <p>
+            Plusieurs épreuves coexistent : pistolet standard, pistolet vitesse, pistolet libre.
+            Disponible sur notre stand de Toulon (CTPV 4), idéal pour les débutants et les compétiteurs.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distance : 25 m</span></div>
+            <div class="disc-spec-row"><i class="bi bi-bullseye"></i><span>Cibles papier ou électroniques</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Pistolet .22 LR, 9mm, .45 ACP…</span></div>
+            <div class="disc-spec-row"><i class="bi bi-map-fill"></i><span>Stand de Toulon (CTPV 4)</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">.22 LR</span>
+            <span class="disc-tag">9 mm</span>
+            <span class="disc-tag">.45 ACP</span>
+            <span class="disc-tag">Papier</span>
+            <span class="disc-tag">Électronique</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carabine 50m -->
+      <div class="disc-big-card" id="carabine">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-record-circle"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">CAR</div>
+            <h3>Tir à la Carabine – 50 m</h3>
+            <p>Précision sur cibles électroniques</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le tir à la carabine à 50 mètres est une discipline olympique exigeante,
+            pratiquée avec des carabines de compétition à canon court en calibre .22 LR.
+            La position allongée (couché) est la plus répandue, mais les épreuves debout
+            (10 m en salle et 50 m en plein air) figurent aussi au programme FFTIR.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distance : 50 m (aussi 25 m)</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Carabine .22 LR, bipied, lunette</span></div>
+            <div class="disc-spec-row"><i class="bi bi-trophy-fill"></i><span>Discipline olympique – épreuves FFTIR</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">.22 LR</span>
+            <span class="disc-tag">Couché</span>
+            <span class="disc-tag">Debout</span>
+            <span class="disc-tag">Olympique</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Armes à canon lisse -->
+      <div class="disc-big-card" id="acl">
+        <div class="disc-card-header">
+          <div class="disc-card-icon"><i class="bi bi-slash-circle"></i></div>
+          <div class="disc-card-title-wrap">
+            <div class="disc-acronym">ACL</div>
+            <h3>Armes à Canon Lisse</h3>
+            <p>Fusil de chasse – tir sur plateaux</p>
+          </div>
+        </div>
+        <div class="disc-card-body">
+          <p>
+            Le tir aux armes à canon lisse regroupe les disciplines pratiquées avec des fusils
+            de chasse (calibre 12, 20…). Le tir sur plateaux (ball-trap, skeet, sporting)
+            consiste à viser et détruire des plateaux d'argile lancés mécaniquement.
+          </p>
+          <p>
+            Discipline conviviale et spectaculaire, idéale pour les chasseurs souhaitant
+            améliorer leur précision ou pour les tireurs cherchant une pratique différente.
+          </p>
+          <div class="disc-specs">
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Fusil de chasse cal. 12, 20…</span></div>
+            <div class="disc-spec-row"><i class="bi bi-circle-fill"></i><span>Plateaux d'argile – ball-trap / skeet</span></div>
+            <div class="disc-spec-row"><i class="bi bi-people-fill"></i><span>Accessible chasseurs et tireurs sportifs</span></div>
+          </div>
+          <div class="disc-tags">
+            <span class="disc-tag">Calibre 12</span>
+            <span class="disc-tag">Ball-trap</span>
+            <span class="disc-tag">Skeet</span>
+            <span class="disc-tag">Sporting</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SECTION PR22 DÉTAILLÉE ═══ -->
+  <div class="pr22-section">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">Discipline phare</span>
+        <h2>Precision Rifle .22 LR — Le PR22</h2>
+        <p>La discipline la plus accessible de la longue distance, en plein développement au CTPV.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="pr22-layout">
+        <div>
+          <h3 style="margin-bottom:1rem;font-size:1.3rem;">Qu'est-ce que le PR22 ?</h3>
+          <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem;">
+            Le <strong style="color:var(--white);">Precision Rifle .22 LR</strong> est une déclinaison
+            accessible du Precision Rifle Match (PRM) pratiqué avec des gros calibres (.308, 6.5 CM…).
+            Ici, tout se joue en <strong style="color:var(--white);">calibre .22 Long Rifle</strong>,
+            un choix délibéré : munitions peu chères, recul nul, et distances adaptées à nos stands.
+          </p>
+          <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem;">
+            Les tireurs engagent une série de cibles métalliques (KYL rack, porc, IPSC métal,
+            têtes de clous…) placées à des distances variées, souvent depuis des positions contraintes :
+            couché derrière un sac, assis sur une chaise, debout en appui sur un poteau.
+            <strong style="color:var(--white);">Chaque engagement est limité en temps.</strong>
+          </p>
+          <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;">
+            C'est une discipline qui récompense autant le matériel bien réglé (lunette précise,
+            munition homogène, détente légère) que la <strong style="color:var(--white);">lecture du vent</strong>
+            et la maîtrise mentale. Parfaite pour progresser avant d'aborder les gros calibres.
+          </p>
+
+          <div class="pr22-stat-grid">
+            <div class="pr22-stat">
+              <div class="pr22-stat-num">50–200m</div>
+              <div class="pr22-stat-label">Distances typiques</div>
+            </div>
+            <div class="pr22-stat">
+              <div class="pr22-stat-num">.22 LR</div>
+              <div class="pr22-stat-label">Calibre unique</div>
+            </div>
+            <div class="pr22-stat">
+              <div class="pr22-stat-num">~30–40€</div>
+              <div class="pr22-stat-label">Pour 500 cartouches</div>
+            </div>
+            <div class="pr22-stat">
+              <div class="pr22-stat-num">Bolt / Semi</div>
+              <div class="pr22-stat-label">Types de carabines</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="pr22-img" style="margin-bottom:1.5rem;">
+            <img src="https://picsum.photos/seed/pr22-rifle/620/380" alt="Precision Rifle .22 LR" loading="lazy">
+          </div>
+
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;">
+            <h4 style="font-size:1rem;margin-bottom:1rem;color:var(--gold);display:flex;align-items:center;gap:0.5rem;">
+              <i class="bi bi-tools"></i> Matériel recommandé pour débuter
+            </h4>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <i class="bi bi-check-circle-fill" style="color:var(--gold);margin-top:0.1rem;flex-shrink:0;"></i>
+                <div>
+                  <strong style="color:var(--white);font-size:0.88rem;">Carabine bolt-action .22 LR</strong>
+                  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.1rem;">CZ 457, Tikka T1x, Ruger Precision Rimfire, Anschütz…</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <i class="bi bi-check-circle-fill" style="color:var(--gold);margin-top:0.1rem;flex-shrink:0;"></i>
+                <div>
+                  <strong style="color:var(--white);font-size:0.88rem;">Lunette 4–16× ou plus</strong>
+                  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.1rem;">Réticule mil-rad ou MOA, tourelles de précision conseillées</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <i class="bi bi-check-circle-fill" style="color:var(--gold);margin-top:0.1rem;flex-shrink:0;"></i>
+                <div>
+                  <strong style="color:var(--white);font-size:0.88rem;">Munition homogène</strong>
+                  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.1rem;">Eley, SK, RWS, CCI Standard… choisir et tester un lot</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <i class="bi bi-check-circle-fill" style="color:var(--gold);margin-top:0.1rem;flex-shrink:0;"></i>
+                <div>
+                  <strong style="color:var(--white);font-size:0.88rem;">Sac de tir / bipied</strong>
+                  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.1rem;">Pour les positions au sol. Un sac arrière stabilise l'arme.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <i class="bi bi-check-circle-fill" style="color:var(--gold);margin-top:0.1rem;flex-shrink:0;"></i>
+                <div>
+                  <strong style="color:var(--white);font-size:0.88rem;">Licence FFTIR</strong>
+                  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.1rem;">Obligatoire pour pratiquer sur nos stands — contactez-nous.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TABLEAU COMPARATIF ═══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Aide au choix</span>
+      <h2>Quelle discipline pour vous ?</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--dark3);border-bottom:2px solid var(--gold-dark);">
+            <th style="padding:0.9rem 1rem;text-align:left;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Discipline</th>
+            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Distance</th>
+            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Budget entrée</th>
+            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Difficulté</th>
+            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Stand</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">PR22 – Precision Rifle .22</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">50–200 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TAR – Tir Aux Réglementaires</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">5–25 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon / Revest</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TSV – Tir Sportif de Vitesse</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">5–15 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TLD – Longue Distance</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">100–300 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#e08a8a;">€€€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★★★</span><span style="color:var(--border);">★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Pistolet – 25 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">25 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Carabine – 50 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">50 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;">
+              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
+          </tr>
+          <tr>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;background:rgba(201,168,76,0.03);">Armes à canon lisse</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);background:rgba(201,168,76,0.03);">Variable</td>
+            <td style="padding:0.85rem 1rem;text-align:center;background:rgba(201,168,76,0.03);"><span style="color:#6de08a;">€€</span></td>
+            <td style="padding:0.85rem 1rem;text-align:center;background:rgba(201,168,76,0.03);">
+              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
+            </td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);background:rgba(201,168,76,0.03);">Revest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">
+      <i class="bi bi-info-circle"></i>&ensp;Budget : € = moins de 500€ · €€ = 500–1 500€ · €€€ = 1 500€+ — Difficulté indicative, tous les niveaux sont accompagnés.
+    </p>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(201,168,76,0.03) 100%);border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);text-align:center;padding:4rem 2rem;">
+    <h2 style="margin-bottom:0.75rem;">Une discipline vous intéresse ?</h2>
+    <p style="color:var(--muted);max-width:500px;margin:0 auto 2rem;">Contactez-nous pour plus d'informations ou venez directement nous rendre visite le samedi matin. Nos membres vous guideront.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn-primary">Nous contacter</a>
+      <a href="maps.html" class="btn-outline">Voir nos stands</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
+      <div class="brand-sub" style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);">Club de Tir Police Varois</div>
+      <p>Club de tir sportif affilié à la Fédération Française de Tir. Présent sur deux sites dans le Var depuis plus de 50 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="disciplines.html">Disciplines</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
+        <li><a href="maps.html">Toulon (83200)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
+    <div class="footer-affiliations">
+      <span class="affil-badge">FFTIR</span>
+      <span class="affil-badge">IPSC</span>
+      <span class="affil-badge">Ligue PACA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

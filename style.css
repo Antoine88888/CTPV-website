@@ -17,6 +17,90 @@
   --white:     #ffffff;
   --danger:    #c94c4c;
   --nav-h:     72px;
+  --nav-bg:    rgba(13,15,20,0.95);
+  --hero-overlay: rgba(13,15,20,0.82);
+  --hero-overlay2: rgba(13,15,20,0.6);
+  --hero-bottom: rgba(13,15,20,1);
+}
+
+/* ── Thème clair ────────────────────────────── */
+[data-theme="light"] {
+  --gold:       #9a6f1e;
+  --gold-dark:  #7a5515;
+  --dark:       #f2f4f8;
+  --dark2:      #e5e8f0;
+  --dark3:      #d8dce8;
+  --card:       #ffffff;
+  --border:     #c2c8d8;
+  --text:       #1e2330;
+  --muted:      #525e78;
+  --white:      #0d0f18;
+  --nav-bg:     rgba(242,244,248,0.97);
+  --hero-overlay:  rgba(242,244,248,0.78);
+  --hero-overlay2: rgba(242,244,248,0.55);
+  --hero-bottom:   rgba(242,244,248,1);
+}
+[data-theme="light"] .navbar {
+  background: var(--nav-bg);
+  border-bottom-color: var(--border);
+}
+[data-theme="light"] .hero-bg {
+  background:
+    linear-gradient(160deg, var(--hero-overlay) 0%, var(--hero-overlay2) 50%, var(--hero-overlay) 100%),
+    url('https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=1600&q=80') center/cover no-repeat;
+}
+[data-theme="light"] .hero-bg::after {
+  background: linear-gradient(to bottom, transparent 60%, var(--dark) 100%);
+}
+[data-theme="light"] .page-hero {
+  background:
+    linear-gradient(160deg, var(--hero-overlay) 0%, var(--hero-overlay2) 100%),
+    url('https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=1200&q=70') center/cover no-repeat;
+}
+[data-theme="light"] .hero h1,
+[data-theme="light"] .hero p {
+  text-shadow: 0 1px 8px rgba(255,255,255,0.3);
+}
+[data-theme="light"] .btn-outline {
+  border-color: rgba(0,0,0,0.25);
+  color: var(--white);
+}
+[data-theme="light"] .btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+[data-theme="light"] .affil-badge {
+  color: var(--gold);
+  border-color: rgba(154,111,30,0.4);
+}
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--dark2); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+
+/* ── Bouton toggle thème ────────────────────── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  color: var(--gold);
+  border-color: var(--gold-dark);
+  background: rgba(201,168,76,0.08);
 }
 
 /* ── Reset ─────────────────────────────────── */

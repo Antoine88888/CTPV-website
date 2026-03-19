@@ -6,6 +6,7 @@
   <title>Disciplines – CTPV</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="theme.js"></script>
   <script src="transition.js" defer></script>
   <style>
     /* ── Discipline hero cards ── */
@@ -165,6 +166,8 @@
       <div class="brand-sub">Club de Tir Police Varois</div>
     </div>
   </a>
+  <div class="navbar-right">
+  <button class="theme-toggle" id="theme-toggle"><i class="bi bi-sun-fill"></i></button>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -176,6 +179,7 @@
     <li><a href="galerie.html">Galerie</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  </div>
 </nav>
 
 <div class="page-content">
@@ -185,6 +189,15 @@
     <div class="page-hero-label">Tir sportif</div>
     <h1>Nos Disciplines</h1>
     <p>Du tir de précision classique à la longue distance, en passant par le Precision Rifle, le CTPV couvre un large spectre du tir sportif.</p>
+    <div style="display:flex;justify-content:center;margin-top:1.5rem;">
+      <div style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;">
+        <div style="display:flex;align-items:center;gap:0;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.05em;">
+          <span style="color:#003189;">FF</span><span style="color:#d4002a;">TIR</span>
+        </div>
+        <span style="width:1px;height:1.2rem;background:var(--border);display:inline-block;"></span>
+        <span style="font-size:0.75rem;color:var(--muted);letter-spacing:0.05em;">Fédération Française de Tir</span>
+      </div>
+    </div>
   </div>
 
   <!-- ═══ GRILLE DISCIPLINES ═══ -->
@@ -221,15 +234,14 @@
             restant un calibre peu coûteux et peu percutant, idéal pour progresser.
           </p>
           <div class="disc-specs">
-            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 50 à 200 m (typiquement 100 m)</span></div>
+            <div class="disc-spec-row"><i class="bi bi-geo-alt-fill"></i><span>Distances : 50 à 300 m (typiquement 100 m)</span></div>
             <div class="disc-spec-row"><i class="bi bi-bullseye"></i><span>Cibles métal type KYL, IPSC, mini-porc…</span></div>
-            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Carabine bolt-action ou semi-auto .22 LR, lunette</span></div>
+            <div class="disc-spec-row"><i class="bi bi-tools"></i><span>Carabine bolt-action .22 LR, lunette</span></div>
             <div class="disc-spec-row"><i class="bi bi-person-arms-up"></i><span>Positions : couché, assis, debout, standing</span></div>
             <div class="disc-spec-row"><i class="bi bi-stopwatch-fill"></i><span>Exercices à temps ou libre selon le format</span></div>
           </div>
           <div class="disc-tags">
             <span class="disc-tag">Bolt-action</span>
-            <span class="disc-tag">Semi-auto</span>
             <span class="disc-tag">.22 LR</span>
             <span class="disc-tag">Lunette</span>
             <span class="disc-tag">Métal</span>
@@ -485,7 +497,7 @@
 
           <div class="pr22-stat-grid">
             <div class="pr22-stat">
-              <div class="pr22-stat-num">50–200m</div>
+              <div class="pr22-stat-num">50–300m</div>
               <div class="pr22-stat-label">Distances typiques</div>
             </div>
             <div class="pr22-stat">
@@ -493,12 +505,12 @@
               <div class="pr22-stat-label">Calibre unique</div>
             </div>
             <div class="pr22-stat">
-              <div class="pr22-stat-num">~30–40€</div>
-              <div class="pr22-stat-label">Pour 500 cartouches</div>
+              <div class="pr22-stat-num">Bolt-action</div>
+              <div class="pr22-stat-label">Type de carabine</div>
             </div>
             <div class="pr22-stat">
-              <div class="pr22-stat-num">Bolt / Semi</div>
-              <div class="pr22-stat-label">Types de carabines</div>
+              <div class="pr22-stat-num">Revest</div>
+              <div class="pr22-stat-label">Stand CTPV</div>
             </div>
           </div>
         </div>
@@ -559,7 +571,7 @@
   <div class="section">
     <div class="section-header">
       <span class="section-label">Aide au choix</span>
-      <h2>Quelle discipline pour vous ?</h2>
+      <h2>Récapitulatif des disciplines</h2>
       <div class="section-divider"></div>
     </div>
 
@@ -568,81 +580,59 @@
         <thead>
           <tr style="background:var(--dark3);border-bottom:2px solid var(--gold-dark);">
             <th style="padding:0.9rem 1rem;text-align:left;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Discipline</th>
+            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Sigle</th>
             <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Distance</th>
-            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Budget entrée</th>
-            <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Difficulté</th>
             <th style="padding:0.9rem 1rem;text-align:center;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;color:var(--gold);font-size:0.78rem;text-transform:uppercase;">Stand</th>
           </tr>
         </thead>
         <tbody>
           <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">PR22 – Precision Rifle .22</td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">50–200 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
-            </td>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Precision Rifle .22 LR</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">PR22</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">50–300 m</td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TAR – Tir Aux Réglementaires</td>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Tir Aux armes Réglementaires</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">TAR</td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">5–25 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
-            </td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon / Revest</td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TSV – Tir Sportif de Vitesse</td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">5–15 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
-            </td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon</td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--border);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">TLD – Longue Distance</td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">100–300 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#e08a8a;">€€€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★★★</span><span style="color:var(--border);">★</span>
-            </td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Pistolet – 25 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">25 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
-            </td>
-            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Toulon</td>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Tir Sportif de Vitesse</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">TSV</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">5–15 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border);">
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Carabine – 50 m</td>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Tir Longue Distance</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">TLD</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">100–300 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Tir au Pistolet</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">PST</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">25 m</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;">Tir à la Carabine</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;">CAR</td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">50 m</td>
-            <td style="padding:0.85rem 1rem;text-align:center;"><span style="color:#6de08a;">€€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;">
-              <span style="color:var(--gold);">★★★</span><span style="color:var(--border);">★★</span>
-            </td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);">Revest</td>
           </tr>
           <tr>
-            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;background:rgba(201,168,76,0.03);">Armes à canon lisse</td>
+            <td style="padding:0.85rem 1rem;color:var(--white);font-weight:600;background:rgba(201,168,76,0.03);">Armes à Canon Lisse</td>
+            <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);font-family:'Rajdhani',sans-serif;font-weight:700;background:rgba(201,168,76,0.03);">ACL</td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);background:rgba(201,168,76,0.03);">Variable</td>
-            <td style="padding:0.85rem 1rem;text-align:center;background:rgba(201,168,76,0.03);"><span style="color:#6de08a;">€€</span></td>
-            <td style="padding:0.85rem 1rem;text-align:center;background:rgba(201,168,76,0.03);">
-              <span style="color:var(--gold);">★★</span><span style="color:var(--border);">★★★</span>
-            </td>
             <td style="padding:0.85rem 1rem;text-align:center;color:var(--muted);background:rgba(201,168,76,0.03);">Revest</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">
-      <i class="bi bi-info-circle"></i>&ensp;Budget : € = moins de 500€ · €€ = 500–1 500€ · €€€ = 1 500€+ — Difficulté indicative, tous les niveaux sont accompagnés.
+      <i class="bi bi-info-circle"></i>&ensp;Toutes les disciplines se pratiquent sur le stand du Revest-les-Eaux. Tous les niveaux sont accompagnés par nos moniteurs.
     </p>
   </div>
 

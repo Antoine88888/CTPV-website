@@ -1,0 +1,101 @@
+[
+  {
+    "id": "id_evt_1",
+    "date": "2026-02-01",
+    "title": "Journée portes ouvertes – Hiver 2026",
+    "description": "Initiations gratuites avec une trentaine de participants. Plusieurs demandes d'adhésion ont suivi cette journée réussie.",
+    "tags": ["Terminé", "Initiation"],
+    "tagColors": ["", ""],
+    "isPast": true
+  },
+  {
+    "id": "id_evt_2",
+    "date": "2026-03-15",
+    "title": "Championnat régional PACA – PR22 (hiver)",
+    "description": "Épreuve hivernale de Précision Rifle .22 LR. Le CTPV a décroché la 1re place en équipes et la 1re en individuel.",
+    "tags": ["Terminé", "PR22", "🥇 Victoire équipes"],
+    "tagColors": ["", "", ""],
+    "isPast": true
+  },
+  {
+    "id": "id_evt_3",
+    "date": "2026-04-05",
+    "title": "Championnat régional PACA – PR22",
+    "description": "Épreuve de Précision Rifle .22 LR du championnat régional PACA, individuel et équipes. Rendez-vous sur le stand du Revest-les-Eaux dès 08h00.",
+    "tags": ["Compétition", "PR22", "Le Revest"],
+    "tagColors": ["gold", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_4",
+    "date": "2026-04-19",
+    "title": "Journée portes ouvertes – Printemps",
+    "description": "Initiations gratuites au tir sportif pour tout public. Venez découvrir nos disciplines et rencontrer les membres du club. Inscription conseillée.",
+    "tags": ["Événement", "Initiation", "Toulon & Le Revest"],
+    "tagColors": ["gold", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_5",
+    "date": "2026-05-10",
+    "title": "Entraînement collectif TAR",
+    "description": "Séance d'entraînement sur le parcours TAR homologué. Ouverte à tous les licenciés du club. Encadrée par les moniteurs CTPV.",
+    "tags": ["Entraînement", "TAR", "Le Revest"],
+    "tagColors": ["", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_6",
+    "date": "2026-06-07",
+    "title": "Championnat régional PACA – TAR & TSV",
+    "description": "Double épreuve régionale : Tir aux armes Réglementaires et Tir de Vitesse. Engagement obligatoire avant le 25 mai auprès du secrétariat.",
+    "tags": ["Compétition", "TAR", "TSV"],
+    "tagColors": ["gold", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_7",
+    "date": "2026-06-28",
+    "title": "Assemblée Générale ordinaire 2026",
+    "description": "AG annuelle du club : bilan de saison, élection du bureau, présentation des projets pour 2026-2027. Présence de tous les membres souhaitée.",
+    "tags": ["Club", "Assemblée", "Toulon"],
+    "tagColors": ["", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_8",
+    "date": "2026-07-12",
+    "title": "Championnat national FFTIR – Longue Distance",
+    "description": "Participation de nos licenciés qualifiés au championnat national en TLD (300m). Dates et lieu définitifs à confirmer par la FFTIR.",
+    "tags": ["National", "TLD"],
+    "tagColors": ["gold", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_9",
+    "date": "2026-09-06",
+    "title": "Reprise de saison – Réunion d'information",
+    "description": "Réunion de rentrée pour tous les licenciés et futurs adhérents. Présentation du programme de la saison 2026-2027, tarifs et nouveautés.",
+    "tags": ["Club", "Rentrée", "Toulon"],
+    "tagColors": ["", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_10",
+    "date": "2026-10-04",
+    "title": "Championnat régional PACA – Pistolet & Carabine",
+    "description": "Épreuves régionales en PST 25m et CAR 50m. Fin des engagements le 15 septembre. Renseignements auprès du secrétariat du club.",
+    "tags": ["Compétition", "PST", "CAR"],
+    "tagColors": ["gold", "", ""],
+    "isPast": false
+  },
+  {
+    "id": "id_evt_11",
+    "date": "2026-11-29",
+    "title": "Journée portes ouvertes – Automne",
+    "description": "Deuxième journée d'initiation de l'année. Idéale pour ceux qui souhaitent découvrir le tir sportif avant les fêtes et envisager une adhésion pour 2027.",
+    "tags": ["Événement", "Initiation"],
+    "tagColors": ["gold", ""],
+    "isPast": false
+  }
+]

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda – CTPV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="theme.js"></script>
+  <script src="transition.js" defer></script>
+</head>
+<body data-page="agenda">
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      <line x1="1"  y1="21" x2="8"  y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="1"  x2="21" y2="8"  stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">CTPV</div>
+      <div class="brand-sub">Club de Tir Police Varois</div>
+    </div>
+  </a>
+  <div class="navbar-right">
+  <button class="theme-toggle" id="theme-toggle"><i class="bi bi-sun-fill"></i></button>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="presentation.html">Le Club</a></li>
+    <li><a href="disciplines.html">Disciplines</a></li>
+    <li><a href="maps.html">Nos Sites</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="palmares.html">Palmarès</a></li>
+    <li><a href="agenda.html" class="active">Agenda</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  </div>
+</nav>
+
+<div class="page-content">
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">Calendrier du club</div>
+    <h1>Agenda CTPV</h1>
+    <p>Retrouvez ici toutes les dates importantes : compétitions, entraînements collectifs, journées portes ouvertes et événements du club.</p>
+  </div>
+
+  <!-- ═══ CONTENU AGENDA ═══ -->
+  <div class="section">
+    <div class="agenda-layout">
+
+      <!-- Liste des événements -->
+      <div>
+        <div class="section-header" style="text-align:left;margin-bottom:1.5rem;">
+          <span class="section-label">À venir</span>
+          <h2>Événements 2026</h2>
+          <div class="section-divider" style="margin:0.75rem 0 0;"></div>
+        </div>
+
+        <div class="agenda-list" id="agenda-list">
+          <div class="ctpv-loading"><span class="ctpv-spinner"></span> Chargement…</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="agenda-sidebar">
+
+        <div class="agenda-sidebar-card">
+          <h3><i class="bi bi-clock-fill" style="color:var(--gold);"></i> Horaires réguliers</h3>
+          <ul class="info-list" style="gap:0.75rem;">
+            <li style="align-items:flex-start;">
+              <span class="icon" style="margin-top:2px;"><i class="bi bi-calendar2-week-fill"></i></span>
+              <div>
+                <div class="label">Lundi</div>
+                <div class="value" data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</div>
+              </div>
+            </li>
+            <li style="align-items:flex-start;">
+              <span class="icon" style="margin-top:2px;"><i class="bi bi-calendar2-week-fill"></i></span>
+              <div>
+                <div class="label">Samedi</div>
+                <div class="value" data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="agenda-sidebar-card">
+          <h3><i class="bi bi-info-circle-fill" style="color:var(--gold);"></i> Informations pratiques</h3>
+          <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;margin:0 0 0.75rem;">
+            Pour participer aux compétitions officielles, vous devez être licencié FFTIR et avoir réglé votre cotisation club pour la saison en cours.
+          </p>
+          <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;margin:0;">
+            Les engagements se font via le secrétariat du club ou directement sur la plateforme FFTIR.
+          </p>
+        </div>
+
+        <div class="agenda-sidebar-card">
+          <h3><i class="bi bi-telephone-fill" style="color:var(--gold);"></i> Une question ?</h3>
+          <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;margin:0 0 1rem;">
+            Pour toute information sur le calendrier ou les inscriptions, contactez-nous :
+          </p>
+          <a href="tel:0782476209" style="display:flex;align-items:center;gap:0.5rem;color:var(--gold);font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;text-decoration:none;margin-bottom:0.5rem;">
+            <i class="bi bi-telephone-fill"></i> 07 82 47 62 09
+          </a>
+          <a href="mailto:ctpv@orange.fr" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.85rem;text-decoration:none;">
+            <i class="bi bi-envelope-fill"></i> ctpv@orange.fr
+          </a>
+        </div>
+
+        <div class="agenda-sidebar-card">
+          <h3><i class="bi bi-geo-alt-fill" style="color:var(--gold);"></i> Nos sites</h3>
+          <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;margin:0 0 0.5rem;">
+            <strong style="color:var(--white);">CTPV 3 – Le Revest</strong><br>
+            Chemin de Tourris, 83200 Le Revest-les-Eaux<br>
+            <em style="font-size:0.78rem;">Longue distance 50–300m</em>
+          </p>
+          <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;margin:0;">
+            <strong style="color:var(--white);">CTPV 4 – Toulon</strong><br>
+            245 avenue des Meuniers, 83200 Toulon<br>
+            <em style="font-size:0.78rem;">Courte distance 25m</em>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-logos">
+    <div class="footer-logos-title">Affiliations officielles</div>
+    <div class="footer-logos-list">
+      <a href="https://www.fftir.fr" target="_blank" rel="noopener" title="Fédération Française de Tir">
+        <img src="https://www.fftir.fr/wp-content/uploads/2019/06/logo-fftir-couleur.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
+      </a>
+      <a href="https://www.ipsc.org" target="_blank" rel="noopener" title="International Practical Shooting Confederation">
+        <img src="https://www.ipsc.org/wp-content/uploads/2020/09/IPSC-Logo.png" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
+      </a>
+      <a href="https://www.liguetiropaca.com" target="_blank" rel="noopener" title="Ligue de Tir PACA">
+        <img src="https://www.liguetiropaca.com/wp-content/uploads/logo-ligue-paca.png" alt="Ligue PACA" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>Ligue PACA</span>'">
+      </a>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
+      <div class="brand-sub" style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);">Club de Tir Police Varois</div>
+      <p>Club de tir sportif affilié à la Fédération Française de Tir. Présent sur deux sites dans le Var depuis plus de 50 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="disciplines.html">Disciplines</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="palmares.html">Palmarès</a></li>
+        <li><a href="agenda.html">Agenda</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0782476209">07 82 47 62 09</a></li>
+        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
+        <li><a href="maps.html">Toulon (83200)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+</script>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

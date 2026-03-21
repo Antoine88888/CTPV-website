@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration – CTPV</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<!-- ═══ LOGIN VIEW ═══ -->
+<div id="login-view">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg width="36" height="36" viewBox="0 0 42 42" fill="none">
+        <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+        <line x1="1" y1="21" x2="8" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="34" y1="21" x2="41" y2="21" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="21" y1="1" x2="21" y2="8" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="21" y1="34" x2="21" y2="41" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div>
+        <div class="brand-title">CTPV</div>
+        <div class="brand-sub">Administration</div>
+      </div>
+    </div>
+    <form id="login-form">
+      <div class="form-grid cols-1" style="gap:1rem;margin-bottom:1.25rem;">
+        <div class="form-group">
+          <label for="login-user">Identifiant</label>
+          <input type="text" id="login-user" autocomplete="username" required placeholder="admin">
+        </div>
+        <div class="form-group">
+          <label for="login-pass">Mot de passe</label>
+          <input type="password" id="login-pass" autocomplete="current-password" required>
+        </div>
+      </div>
+      <div id="login-error" class="alert error" style="display:none;margin-bottom:1rem;"></div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+        <i class="bi bi-box-arrow-in-right"></i> Se connecter
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ PANEL VIEW ═══ -->
+<div id="panel-view" style="display:none;">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <svg width="28" height="28" viewBox="0 0 42 42" fill="none">
+        <circle cx="21" cy="21" r="20" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="21" cy="21" r="6"  stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="21" cy="21" r="2"  fill="#C9A84C"/>
+      </svg>
+      <div><div class="b-title">CTPV</div><div class="b-sub">Admin</div></div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <a data-panel="notice"   class="active"><i class="bi bi-bell-fill"></i> Bandeau d'alerte</a>
+      <a data-panel="news">    <i class="bi bi-newspaper"></i> Actualités</a>
+      <a data-panel="agenda">  <i class="bi bi-calendar3"></i> Agenda</a>
+      <a data-panel="palmares"><i class="bi bi-trophy-fill"></i> Palmarès</a>
+      <a data-panel="gallery"> <i class="bi bi-images"></i> Galerie</a>
+      <a data-panel="hours">   <i class="bi bi-clock-fill"></i> Horaires</a>
+      <a data-panel="account"> <i class="bi bi-person-fill"></i> Mon compte</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="sidebar-user"></div>
+      <a href="/" target="_blank" class="sidebar-site-link"><i class="bi bi-eye"></i> Voir le site</a>
+      <button id="logout-btn"><i class="bi bi-box-arrow-right"></i> Déconnexion</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="panel-main">
+
+    <!-- ── BANDEAU D'ALERTE ── -->
+    <div id="panel-notice" class="panel-section active">
+      <div class="panel-header"><h2><i class="bi bi-bell-fill" style="color:var(--gold)"></i> Bandeau d'alerte</h2></div>
+      <p style="color:var(--muted);font-size:0.85rem;">Affichez un message important en haut de toutes les pages du site (fermeture exceptionnelle, annonce urgente, etc.).</p>
+      <div class="admin-card">
+        <div class="admin-card-header">Configuration du bandeau</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group" style="grid-column:span 2;">
+              <div class="toggle-row">
+                <label class="toggle"><input type="checkbox" id="notice-active"><span class="toggle-slider"></span></label>
+                <span class="toggle-label">Afficher le bandeau sur le site</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Type de bandeau</label>
+              <select id="notice-type">
+                <option value="warning">⚠ Avertissement (doré)</option>
+                <option value="info">ℹ Information (bleu)</option>
+                <option value="danger">🚨 Urgence (rouge)</option>
+              </select>
+            </div>
+            <div class="form-group form-span-2">
+              <label>Message</label>
+              <textarea id="notice-message" rows="3" placeholder="Ex : Le stand est fermé ce samedi 5 avril pour travaux de maintenance."></textarea>
+              <div class="input-note">Max 500 caractères. Laissez vide pour aucun message.</div>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <div class="input-note" style="margin-bottom:0.5rem;">Aperçu :</div>
+            <div id="notice-preview" class="notice-preview warning">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <span id="notice-preview-text">Votre message apparaîtra ici</span>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <button class="btn-primary" id="save-notice"><i class="bi bi-check-lg"></i> Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ACTUALITÉS ── -->
+    <div id="panel-news" class="panel-section">
+      <div class="panel-header">
+        <h2><i class="bi bi-newspaper" style="color:var(--gold)"></i> Actualités</h2>
+        <div class="header-right">
+          <button class="btn-primary" id="add-news-btn"><i class="bi bi-plus-lg"></i> Ajouter</button>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.85rem;">Les 6 premières actualités sont affichées sur la page d'accueil, de la plus récente à la plus ancienne.</p>
+      <div class="admin-card">
+        <div class="admin-card-header">Articles (<span id="news-count">0</span>)</div>
+        <div class="admin-card-body" id="news-list"><div class="empty-state"><i class="bi bi-newspaper"></i>Aucune actualité</div></div>
+      </div>
+    </div>
+
+    <!-- ── AGENDA ── -->
+    <div id="panel-agenda" class="panel-section">
+      <div class="panel-header">
+        <h2><i class="bi bi-calendar3" style="color:var(--gold)"></i> Agenda</h2>
+        <div class="header-right">
+          <button class="btn-primary" id="add-agenda-btn"><i class="bi bi-plus-lg"></i> Ajouter</button>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.85rem;">Les événements sont affichés chronologiquement. Les événements passés apparaissent en bas, estompés.</p>
+      <div class="admin-card">
+        <div class="admin-card-header">Événements (<span id="agenda-count">0</span>)</div>
+        <div class="admin-card-body" id="agenda-list"><div class="empty-state"><i class="bi bi-calendar3"></i>Aucun événement</div></div>
+      </div>
+    </div>
+
+    <!-- ── PALMARÈS ── -->
+    <div id="panel-palmares" class="panel-section">
+      <div class="panel-header">
+        <h2><i class="bi bi-trophy-fill" style="color:var(--gold)"></i> Palmarès</h2>
+        <div class="header-right">
+          <button class="btn-primary" id="add-palmares-btn"><i class="bi bi-plus-lg"></i> Ajouter</button>
+        </div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-header">Résultats (<span id="palmares-count">0</span>)</div>
+        <div class="admin-card-body" id="palmares-list"><div class="empty-state"><i class="bi bi-trophy-fill"></i>Aucun résultat</div></div>
+      </div>
+    </div>
+
+    <!-- ── GALERIE ── -->
+    <div id="panel-gallery" class="panel-section">
+      <div class="panel-header">
+        <h2><i class="bi bi-images" style="color:var(--gold)"></i> Galerie photos</h2>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-header">Ajouter une photo</div>
+        <div class="admin-card-body">
+          <div class="upload-zone" id="upload-zone">
+            <i class="bi bi-cloud-upload-fill"></i>
+            <p>Glissez une image ici ou <strong>cliquez pour parcourir</strong></p>
+            <small>JPG, PNG, WebP – max 10 Mo</small>
+            <input type="file" id="file-input" accept="image/*" style="display:none;">
+          </div>
+          <img id="upload-preview" alt="Aperçu">
+          <div class="upload-progress" id="upload-progress"><div class="upload-progress-bar" id="upload-bar"></div></div>
+          <div id="upload-form" style="display:none;margin-top:1.25rem;">
+            <div class="form-grid" style="gap:1rem;">
+              <div class="form-group">
+                <label>Titre</label>
+                <input type="text" id="gal-title" placeholder="Titre de la photo">
+              </div>
+              <div class="form-group">
+                <label>Catégorie</label>
+                <select id="gal-cat">
+                  <option value="stands">Nos stands</option>
+                  <option value="competitions">Compétitions</option>
+                  <option value="vie">Vie du club</option>
+                  <option value="formation">Formation</option>
+                </select>
+              </div>
+              <div class="form-group form-span-2">
+                <label>Description</label>
+                <input type="text" id="gal-desc" placeholder="Légende courte">
+              </div>
+              <div class="form-group" style="flex-direction:row;align-items:center;gap:0.5rem;">
+                <input type="checkbox" id="gal-tall">
+                <label for="gal-tall" style="text-transform:none;font-size:0.85rem;color:var(--text);cursor:pointer;">Format portrait (photo plus haute)</label>
+              </div>
+            </div>
+            <div style="margin-top:1rem;display:flex;gap:0.75rem;">
+              <button class="btn-primary" id="upload-submit-btn"><i class="bi bi-upload"></i> Envoyer</button>
+              <button class="btn-secondary" id="upload-cancel-btn"><i class="bi bi-x"></i> Annuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-header">Photos publiées (<span id="gallery-count">0</span>)</div>
+        <div class="admin-card-body">
+          <div class="gallery-admin-grid" id="gallery-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="bi bi-images"></i>Aucune photo</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HORAIRES ── -->
+    <div id="panel-hours" class="panel-section">
+      <div class="panel-header"><h2><i class="bi bi-clock-fill" style="color:var(--gold)"></i> Horaires d'ouverture</h2></div>
+      <p style="color:var(--muted);font-size:0.85rem;">Ces horaires s'affichent automatiquement sur la page d'accueil, la page contact et la page des sites.</p>
+      <div class="admin-card">
+        <div class="admin-card-header">Configuration</div>
+        <div class="admin-card-body">
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <!-- Lundi -->
+            <div>
+              <div class="section-title" style="margin-bottom:0.75rem;"><i class="bi bi-calendar2-week"></i> Lundi</div>
+              <div class="hours-day">
+                <div class="toggle-row" style="grid-column:span 3;">
+                  <label class="toggle"><input type="checkbox" id="hours-lundi-open" checked><span class="toggle-slider"></span></label>
+                  <span class="toggle-label">Ouvert le lundi</span>
+                </div>
+                <div class="form-group">
+                  <label>Matin</label>
+                  <input type="text" id="hours-lundi-morning" placeholder="08h00 – 12h00">
+                </div>
+                <div class="form-group">
+                  <label>Après-midi</label>
+                  <input type="text" id="hours-lundi-afternoon" placeholder="13h30 – 16h30">
+                </div>
+              </div>
+            </div>
+            <!-- Samedi -->
+            <div>
+              <div class="section-title" style="margin-bottom:0.75rem;"><i class="bi bi-calendar2-week"></i> Samedi</div>
+              <div class="hours-day">
+                <div class="toggle-row" style="grid-column:span 3;">
+                  <label class="toggle"><input type="checkbox" id="hours-samedi-open" checked><span class="toggle-slider"></span></label>
+                  <span class="toggle-label">Ouvert le samedi</span>
+                </div>
+                <div class="form-group">
+                  <label>Matin</label>
+                  <input type="text" id="hours-samedi-morning" placeholder="08h00 – 12h00">
+                </div>
+                <div class="form-group">
+                  <label>Après-midi</label>
+                  <input type="text" id="hours-samedi-afternoon" placeholder="13h30 – 16h30">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <button class="btn-primary" id="save-hours"><i class="bi bi-check-lg"></i> Enregistrer les horaires</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MON COMPTE ── -->
+    <div id="panel-account" class="panel-section">
+      <div class="panel-header"><h2><i class="bi bi-person-fill" style="color:var(--gold)"></i> Mon compte</h2></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+        <div class="admin-card">
+          <div class="admin-card-header">Adresse email</div>
+          <div class="admin-card-body">
+            <p style="font-size:0.83rem;color:var(--muted);margin-bottom:1rem;">Email actuel : <strong id="account-email-display" style="color:var(--text);">—</strong></p>
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Nouvel email</label>
+              <input type="email" id="account-email" placeholder="nouveau@email.fr">
+            </div>
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Mot de passe actuel (requis)</label>
+              <input type="password" id="account-email-pwd" placeholder="••••••••">
+            </div>
+            <button class="btn-primary" id="save-email"><i class="bi bi-check-lg"></i> Mettre à jour l'email</button>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header">Changer le mot de passe</div>
+          <div class="admin-card-body">
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Mot de passe actuel</label>
+              <input type="password" id="pwd-current" placeholder="••••••••">
+            </div>
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Nouveau mot de passe</label>
+              <input type="password" id="pwd-new" placeholder="••••••• (min 6 caractères)">
+            </div>
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Confirmer</label>
+              <input type="password" id="pwd-confirm" placeholder="•••••••">
+            </div>
+            <button class="btn-primary" id="save-password"><i class="bi bi-shield-lock-fill"></i> Changer le mot de passe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══ MODAL ═══ -->
+<div id="modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modal-title">Titre</h3>
+      <button class="modal-close" id="modal-close-btn">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn-secondary" id="modal-cancel-btn">Annuler</button>
+      <button class="btn-primary"   id="modal-save-btn"><i class="bi bi-check-lg"></i> Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast" class="toast hidden"></div>
+
+<script>
+'use strict';
+
+// ─── Utilities ────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+async function api(method, url, data) {
+  const opts = { method, credentials: 'include', headers: {} };
+  if (data) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(data); }
+  const r = await fetch(url, opts);
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.error || 'Erreur serveur');
+  return j;
+}
+
+let toastTimer;
+function toast(msg, ok = true) {
+  const el = $('toast');
+  el.className = 'toast ' + (ok ? 'success' : 'error');
+  el.innerHTML = `<i class="bi bi-${ok ? 'check-circle-fill' : 'exclamation-circle-fill'}"></i> ${esc(msg)}`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.add('hidden'), 3500);
+}
+
+// ─── Modal ────────────────────────────────────────────────
+let modalSaveFn = null;
+function openModal(title, bodyHTML, onSave) {
+  $('modal-title').textContent = title;
+  $('modal-body').innerHTML = bodyHTML;
+  modalSaveFn = onSave;
+  $('modal').classList.remove('hidden');
+}
+function closeModal() { $('modal').classList.add('hidden'); modalSaveFn = null; }
+$('modal-close-btn').onclick  = closeModal;
+$('modal-cancel-btn').onclick = closeModal;
+$('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
+$('modal-save-btn').onclick = async () => {
+  if (!modalSaveFn) return;
+  $('modal-save-btn').disabled = true;
+  try { await modalSaveFn(); closeModal(); }
+  catch (e) { toast(e.message, false); }
+  finally { $('modal-save-btn').disabled = false; }
+};
+
+// ─── Tag input widget ─────────────────────────────────────
+function initTagInput(containerId) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+  wrap.innerHTML = '<div class="tag-input-wrap" id="' + containerId + '-wrap"><input class="tag-input-field" placeholder="Ajouter un tag, Entrée…"></div>';
+  const input = wrap.querySelector('.tag-input-field');
+  input.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+      e.preventDefault();
+      addTag(containerId, input.value.trim());
+      input.value = '';
+    } else if (e.key === 'Backspace' && !input.value) {
+      removeLastTag(containerId);
+    }
+  });
+  wrap.querySelector('.tag-input-wrap').addEventListener('click', () => input.focus());
+}
+function addTag(containerId, text) {
+  const wrap  = document.getElementById(containerId + '-wrap');
+  const input = wrap.querySelector('.tag-input-field');
+  const chip  = document.createElement('span');
+  chip.className = 'tag-chip';
+  chip.dataset.value = text;
+  chip.innerHTML = esc(text) + '<button type="button" aria-label="Supprimer">×</button>';
+  chip.querySelector('button').onclick = () => chip.remove();
+  wrap.insertBefore(chip, input);
+}
+function removeLastTag(containerId) {
+  const chips = document.querySelectorAll('#' + containerId + '-wrap .tag-chip');
+  if (chips.length) chips[chips.length - 1].remove();
+}
+function getTags(containerId) {
+  return [...document.querySelectorAll('#' + containerId + '-wrap .tag-chip')].map(c => c.dataset.value);
+}
+function setTags(containerId, tags) {
+  document.querySelectorAll('#' + containerId + '-wrap .tag-chip').forEach(c => c.remove());
+  (tags || []).forEach(t => addTag(containerId, t));
+}
+
+// ─── Sidebar navigation ───────────────────────────────────
+document.querySelectorAll('[data-panel]').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('[data-panel]').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.panel-section').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+    document.getElementById('panel-' + a.dataset.panel)?.classList.add('active');
+    loaders[a.dataset.panel]?.();
+  });
+});
+
+// ─── Auth ─────────────────────────────────────────────────
+async function checkAuth() {
+  const me = await api('GET', '/api/auth/me');
+  if (!me.ok) { showLogin(); return false; }
+  $('sidebar-user').textContent = me.email || me.username || '';
+  $('account-email-display').textContent = me.email || '—';
+  return true;
+}
+
+function showLogin()  { $('login-view').style.display='flex'; $('panel-view').style.display='none'; }
+function showPanel()  { $('login-view').style.display='none'; $('panel-view').style.display='flex'; }
+
+$('login-form').onsubmit = async e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled = true;
+  try {
+    await api('POST', '/api/auth/login', { username: $('login-user').value, password: $('login-pass').value });
+    $('login-error').style.display = 'none';
+    showPanel();
+    loaders.notice();
+  } catch (err) {
+    $('login-error').textContent = err.message;
+    $('login-error').style.display = 'flex';
+  } finally { btn.disabled = false; }
+};
+
+$('logout-btn').onclick = async () => {
+  await api('POST', '/api/auth/logout').catch(() => {});
+  showLogin();
+};
+
+// ─── NOTICE ───────────────────────────────────────────────
+async function loadNotice() {
+  try {
+    const d = await api('GET', '/api/notice');
+    $('notice-active').checked  = !!d.active;
+    $('notice-type').value      = d.type || 'warning';
+    $('notice-message').value   = d.message || '';
+    updateNoticePreview();
+  } catch {}
+}
+
+function updateNoticePreview() {
+  const type = $('notice-type').value;
+  const msg  = $('notice-message').value.trim();
+  const icons = { warning: 'bi-exclamation-triangle-fill', info: 'bi-info-circle-fill', danger: 'bi-x-octagon-fill' };
+  const prev = $('notice-preview');
+  prev.className = 'notice-preview ' + type;
+  $('notice-preview-text').textContent = msg || 'Votre message apparaîtra ici';
+  const i = prev.querySelector('i');
+  if (i) i.className = 'bi ' + (icons[type] || icons.warning);
+}
+$('notice-type').oninput    = updateNoticePreview;
+$('notice-message').oninput = updateNoticePreview;
+
+$('save-notice').onclick = async () => {
+  try {
+    await api('PUT', '/api/admin/notice', { active: $('notice-active').checked, type: $('notice-type').value, message: $('notice-message').value });
+    toast('Bandeau mis à jour');
+  } catch (e) { toast(e.message, false); }
+};
+
+// ─── NEWS ─────────────────────────────────────────────────
+async function loadNews() {
+  const items = await api('GET', '/api/admin/news').catch(() => []);
+  $('news-count').textContent = items.length;
+  const list = $('news-list');
+  if (!items.length) { list.innerHTML = '<div class="empty-state"><i class="bi bi-newspaper"></i>Aucune actualité</div>'; return; }
+  list.innerHTML = '<div class="item-list">' + items.map(n => `
+    <div class="item-row">
+      <div class="item-row-info">
+        <div class="item-row-title">${esc(n.title)}</div>
+        <div class="item-row-meta">${esc(n.tag||'')} · ${esc(n.dateLabel||n.date||'')}</div>
+      </div>
+      <div class="item-row-actions">
+        <button class="btn-icon" onclick="editNews('${n.id}')" title="Modifier"><i class="bi bi-pencil-fill"></i></button>
+        <button class="btn-icon btn-danger" onclick="deleteItem('news','${n.id}',loadNews)" title="Supprimer"><i class="bi bi-trash-fill"></i></button>
+      </div>
+    </div>`).join('') + '</div>';
+}
+
+function newsForm(n = {}) {
+  return `
+    <div class="form-grid" style="gap:1rem;">
+      <div class="form-group form-span-2"><label>Titre *</label><input id="m-title" type="text" value="${esc(n.title||'')}" required></div>
+      <div class="form-group"><label>Catégorie / Tag</label><input id="m-tag" type="text" value="${esc(n.tag||'')}" placeholder="Compétition"></div>
+      <div class="form-group"><label>Date affichée</label><input id="m-dateLabel" type="text" value="${esc(n.dateLabel||'')}" placeholder="15 mars 2026"></div>
+      <div class="form-group"><label>Date (tri)</label><input id="m-date" type="date" value="${esc(n.date||'')}"></div>
+      <div class="form-group form-span-2"><label>Résumé</label><textarea id="m-summary" rows="3">${esc(n.summary||'')}</textarea></div>
+      <div class="form-group form-span-2"><label>Image (URL ou /uploads/…)</label><input id="m-imageUrl" type="text" value="${esc(n.imageUrl||'')}" placeholder="https://… ou /uploads/…"></div>
+      <div class="form-group"><label>Texte du lien</label><input id="m-linkLabel" type="text" value="${esc(n.linkLabel||'Lire la suite')}"></div>
+      <div class="form-group"><label>Destination du lien</label><input id="m-linkHref" type="text" value="${esc(n.linkHref||'#')}" placeholder="#"></div>
+    </div>`;
+}
+
+$('add-news-btn').onclick = () => openModal('Ajouter une actualité', newsForm(), async () => {
+  const data = { title: $('m-title').value.trim(), tag: $('m-tag').value.trim(), date: $('m-date').value, dateLabel: $('m-dateLabel').value.trim(), summary: $('m-summary').value.trim(), imageUrl: $('m-imageUrl').value.trim(), linkLabel: $('m-linkLabel').value.trim()||'Lire la suite', linkHref: $('m-linkHref').value.trim()||'#' };
+  if (!data.title) throw new Error('Le titre est obligatoire');
+  await api('POST', '/api/admin/news', data);
+  toast('Actualité ajoutée'); loadNews();
+});
+
+window.editNews = async id => {
+  const items = await api('GET', '/api/admin/news').catch(() => []);
+  const n = items.find(x => x.id === id);
+  if (!n) return;
+  openModal('Modifier l\'actualité', newsForm(n), async () => {
+    const data = { title: $('m-title').value.trim(), tag: $('m-tag').value.trim(), date: $('m-date').value, dateLabel: $('m-dateLabel').value.trim(), summary: $('m-summary').value.trim(), imageUrl: $('m-imageUrl').value.trim(), linkLabel: $('m-linkLabel').value.trim()||'Lire la suite', linkHref: $('m-linkHref').value.trim()||'#' };
+    if (!data.title) throw new Error('Le titre est obligatoire');
+    await api('PUT', '/api/admin/news/' + id, data);
+    toast('Actualité mise à jour'); loadNews();
+  });
+};
+
+// ─── AGENDA ───────────────────────────────────────────────
+async function loadAgenda() {
+  const items = await api('GET', '/api/admin/agenda').catch(() => []);
+  $('agenda-count').textContent = items.length;
+  const list = $('agenda-list');
+  if (!items.length) { list.innerHTML = '<div class="empty-state"><i class="bi bi-calendar3"></i>Aucun événement</div>'; return; }
+  list.innerHTML = '<div class="item-list">' + items.map(e => `
+    <div class="item-row">
+      <div class="item-row-info">
+        <div class="item-row-title">${esc(e.title)}</div>
+        <div class="item-row-meta">${esc(e.date||'')} ${e.isPast?'· Passé':''}</div>
+      </div>
+      <div class="item-row-actions">
+        <button class="btn-icon" onclick="editAgenda('${e.id}')" title="Modifier"><i class="bi bi-pencil-fill"></i></button>
+        <button class="btn-icon btn-danger" onclick="deleteItem('agenda','${e.id}',loadAgenda)" title="Supprimer"><i class="bi bi-trash-fill"></i></button>
+      </div>
+    </div>`).join('') + '</div>';
+}
+
+function agendaForm(e = {}) {
+  return `
+    <div class="form-grid" style="gap:1rem;">
+      <div class="form-group"><label>Date *</label><input id="m-date" type="date" value="${esc(e.date||'')}" required></div>
+      <div class="form-group form-span-2"><label>Titre *</label><input id="m-title" type="text" value="${esc(e.title||'')}" required></div>
+      <div class="form-group form-span-2"><label>Description</label><textarea id="m-desc" rows="3">${esc(e.description||'')}</textarea></div>
+      <div class="form-group form-span-2"><label>Tags (appuyez Entrée pour ajouter)</label><div id="m-tags-container"></div></div>
+      <div class="form-group" style="flex-direction:row;align-items:center;gap:0.5rem;grid-column:span 2;">
+        <input type="checkbox" id="m-past" ${e.isPast?'checked':''}>
+        <label for="m-past" style="text-transform:none;font-size:0.85rem;color:var(--text);cursor:pointer;">Marquer comme événement passé</label>
+      </div>
+    </div>`;
+}
+
+$('add-agenda-btn').onclick = () => {
+  openModal('Ajouter un événement', agendaForm(), async () => {
+    initTagInput('m-tags-container');
+    const tags = getTags('m-tags-container');
+    const data = { date: $('m-date').value, title: $('m-title').value.trim(), description: $('m-desc').value.trim(), tags, tagColors: tags.map(() => ''), isPast: $('m-past').checked };
+    if (!data.date || !data.title) throw new Error('La date et le titre sont obligatoires');
+    await api('POST', '/api/admin/agenda', data);
+    toast('Événement ajouté'); loadAgenda();
+  });
+  setTimeout(() => initTagInput('m-tags-container'), 50);
+};
+
+window.editAgenda = async id => {
+  const items = await api('GET', '/api/admin/agenda').catch(() => []);
+  const e = items.find(x => x.id === id);
+  if (!e) return;
+  openModal('Modifier l\'événement', agendaForm(e), async () => {
+    const tags = getTags('m-tags-container');
+    const data = { date: $('m-date').value, title: $('m-title').value.trim(), description: $('m-desc').value.trim(), tags, tagColors: (e.tagColors||[]).slice(0,tags.length), isPast: $('m-past').checked };
+    if (!data.date || !data.title) throw new Error('La date et le titre sont obligatoires');
+    await api('PUT', '/api/admin/agenda/' + id, data);
+    toast('Événement mis à jour'); loadAgenda();
+  });
+  setTimeout(() => { initTagInput('m-tags-container'); setTags('m-tags-container', e.tags); }, 50);
+};
+
+// ─── PALMARÈS ─────────────────────────────────────────────
+async function loadPalmares() {
+  const items = await api('GET', '/api/admin/palmares').catch(() => []);
+  $('palmares-count').textContent = items.length;
+  const list = $('palmares-list');
+  const medalEmoji = { or:'🥇', argent:'🥈', bronze:'🥉' };
+  if (!items.length) { list.innerHTML = '<div class="empty-state"><i class="bi bi-trophy-fill"></i>Aucun résultat</div>'; return; }
+  list.innerHTML = '<div class="item-list">' + items.map(p => `
+    <div class="item-row">
+      <span class="item-badge ${p.medal||'or'}">${medalEmoji[p.medal]||'🏅'}</span>
+      <div class="item-row-info">
+        <div class="item-row-title">${esc(p.athleteName)} ${p.isHistorique?'<em style="font-size:0.72rem;color:var(--muted)">(historique)</em>':''}</div>
+        <div class="item-row-meta">${esc(p.eventName||'')} · ${esc(p.season||'')}</div>
+      </div>
+      <div class="item-row-actions">
+        <button class="btn-icon" onclick="editPalmares('${p.id}')" title="Modifier"><i class="bi bi-pencil-fill"></i></button>
+        <button class="btn-icon btn-danger" onclick="deleteItem('palmares','${p.id}',loadPalmares)" title="Supprimer"><i class="bi bi-trash-fill"></i></button>
+      </div>
+    </div>`).join('') + '</div>';
+}
+
+function palmaresForm(p = {}) {
+  return `
+    <div class="form-grid" style="gap:1rem;">
+      <div class="form-group"><label>Médaille</label>
+        <select id="m-medal">
+          <option value="or"     ${p.medal==='or'    ?'selected':''}>🥇 Or</option>
+          <option value="argent" ${p.medal==='argent'?'selected':''}>🥈 Argent</option>
+          <option value="bronze" ${p.medal==='bronze'?'selected':''}>🥉 Bronze</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Saison</label><input id="m-season" type="text" value="${esc(p.season||'')}" placeholder="2025"></div>
+      <div class="form-group form-span-2"><label>Nom (athlète ou équipe) *</label><input id="m-athlete" type="text" value="${esc(p.athleteName||'')}" required></div>
+      <div class="form-group form-span-2"><label>Compétition</label><input id="m-event" type="text" value="${esc(p.eventName||'')}" placeholder="Championnat PACA · Équipes · 2025"></div>
+      <div class="form-group form-span-2"><label>Tags (appuyez Entrée pour ajouter)</label><div id="m-tags-container"></div></div>
+      <div class="form-group form-span-2"><label>Description</label><textarea id="m-desc" rows="3">${esc(p.description||'')}</textarea></div>
+      <div class="form-group" style="flex-direction:row;align-items:center;gap:0.5rem;grid-column:span 2;">
+        <input type="checkbox" id="m-hist" ${p.isHistorique?'checked':''}>
+        <label for="m-hist" style="text-transform:none;font-size:0.85rem;color:var(--text);cursor:pointer;">Afficher dans la section historique</label>
+      </div>
+    </div>`;
+}
+
+$('add-palmares-btn').onclick = () => {
+  openModal('Ajouter un résultat', palmaresForm(), async () => {
+    const tags = getTags('m-tags-container');
+    const data = { medal: $('m-medal').value, season: $('m-season').value.trim(), athleteName: $('m-athlete').value.trim(), eventName: $('m-event').value.trim(), tags, tagColors: tags.map(() => ''), description: $('m-desc').value.trim(), isHistorique: $('m-hist').checked };
+    if (!data.athleteName) throw new Error('Le nom est obligatoire');
+    await api('POST', '/api/admin/palmares', data);
+    toast('Résultat ajouté'); loadPalmares();
+  });
+  setTimeout(() => initTagInput('m-tags-container'), 50);
+};
+
+window.editPalmares = async id => {
+  const items = await api('GET', '/api/admin/palmares').catch(() => []);
+  const p = items.find(x => x.id === id);
+  if (!p) return;
+  openModal('Modifier le résultat', palmaresForm(p), async () => {
+    const tags = getTags('m-tags-container');
+    const data = { medal: $('m-medal').value, season: $('m-season').value.trim(), athleteName: $('m-athlete').value.trim(), eventName: $('m-event').value.trim(), tags, tagColors: tags.map(() => ''), description: $('m-desc').value.trim(), isHistorique: $('m-hist').checked };
+    if (!data.athleteName) throw new Error('Le nom est obligatoire');
+    await api('PUT', '/api/admin/palmares/' + id, data);
+    toast('Résultat mis à jour'); loadPalmares();
+  });
+  setTimeout(() => { initTagInput('m-tags-container'); setTags('m-tags-container', p.tags); }, 50);
+};
+
+// ─── GALLERY ──────────────────────────────────────────────
+let pendingUploadUrl = null;
+let pendingFilename  = null;
+
+function setupUpload() {
+  const zone  = $('upload-zone');
+  const input = $('file-input');
+
+  zone.addEventListener('click', () => input.click());
+  input.addEventListener('change', () => { if (input.files[0]) previewFile(input.files[0]); });
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('drag-over');
+    if (e.dataTransfer.files[0]) { input.files = e.dataTransfer.files; previewFile(input.files[0]); }
+  });
+
+  $('upload-cancel-btn').onclick = () => {
+    $('upload-form').style.display = 'none';
+    $('upload-preview').style.display = 'none';
+    $('upload-progress').style.display = 'none';
+    input.value = ''; pendingUploadUrl = null; pendingFilename = null;
+  };
+
+  $('upload-submit-btn').onclick = async () => {
+    if (!pendingUploadUrl) { toast('Aucun fichier sélectionné', false); return; }
+    const data = { url: pendingUploadUrl, filename: pendingFilename, title: $('gal-title').value.trim(), description: $('gal-desc').value.trim(), category: $('gal-cat').value, isTall: $('gal-tall').checked };
+    if (!data.title) { toast('Le titre est obligatoire', false); return; }
+    await api('POST', '/api/admin/gallery', data);
+    toast('Photo ajoutée');
+    $('upload-cancel-btn').click();
+    loadGallery();
+  };
+}
+
+function previewFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    $('upload-preview').src = e.target.result;
+    $('upload-preview').style.display = 'block';
+    uploadFile(file);
+  };
+  reader.readAsDataURL(file);
+}
+
+function uploadFile(file) {
+  const fd = new FormData();
+  fd.append('file', file);
+  const xhr = new XMLHttpRequest();
+  $('upload-progress').style.display = 'block';
+  const bar = $('upload-bar');
+  xhr.upload.onprogress = e => { if (e.lengthComputable) bar.style.width = (e.loaded/e.total*100)+'%'; };
+  xhr.onload = () => {
+    const r = JSON.parse(xhr.responseText);
+    if (xhr.status === 200) {
+      pendingUploadUrl = r.url; pendingFilename = r.filename;
+      $('upload-form').style.display = 'block';
+      bar.style.width = '100%';
+    } else { toast(r.error || 'Erreur upload', false); }
+  };
+  xhr.onerror = () => toast('Erreur réseau', false);
+  xhr.open('POST', '/api/admin/upload');
+  xhr.withCredentials = true;
+  xhr.send(fd);
+}
+
+async function loadGallery() {
+  const items = await api('GET', '/api/admin/gallery').catch(() => []);
+  $('gallery-count').textContent = items.length;
+  const grid = $('gallery-grid');
+  if (!items.length) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="bi bi-images"></i>Aucune photo</div>'; return; }
+  grid.innerHTML = items.map(img => `
+    <div class="gallery-thumb">
+      <img src="${esc(img.url)}" alt="${esc(img.title||'')}" loading="lazy">
+      <div class="gallery-thumb-overlay">
+        <div class="gallery-thumb-title">${esc(img.title||'')}</div>
+        <button class="btn-danger" style="font-size:0.75rem;padding:0.3rem 0.6rem;" onclick="deleteItem('gallery','${img.id}',loadGallery)"><i class="bi bi-trash-fill"></i> Supprimer</button>
+      </div>
+    </div>`).join('');
+}
+
+// ─── HOURS ────────────────────────────────────────────────
+async function loadHours() {
+  const s = await api('GET', '/api/settings').catch(() => ({}));
+  const h = s.hours || {};
+  $('hours-lundi-open').checked      = h.lundi?.open !== false;
+  $('hours-lundi-morning').value     = h.lundi?.morning   || '';
+  $('hours-lundi-afternoon').value   = h.lundi?.afternoon || '';
+  $('hours-samedi-open').checked     = h.samedi?.open !== false;
+  $('hours-samedi-morning').value    = h.samedi?.morning   || '';
+  $('hours-samedi-afternoon').value  = h.samedi?.afternoon || '';
+}
+
+$('save-hours').onclick = async () => {
+  const data = { hours: {
+    lundi:  { open: $('hours-lundi-open').checked,  morning: $('hours-lundi-morning').value.trim(),  afternoon: $('hours-lundi-afternoon').value.trim()  },
+    samedi: { open: $('hours-samedi-open').checked, morning: $('hours-samedi-morning').value.trim(), afternoon: $('hours-samedi-afternoon').value.trim() }
+  }};
+  try { await api('PUT', '/api/admin/settings', data); toast('Horaires mis à jour'); }
+  catch(e) { toast(e.message, false); }
+};
+
+// ─── ACCOUNT ──────────────────────────────────────────────
+async function loadAccount() {
+  const me = await api('GET', '/api/auth/me').catch(() => ({}));
+  if (me.email) { $('account-email-display').textContent = me.email; $('sidebar-user').textContent = me.email; }
+}
+
+$('save-email').onclick = async () => {
+  const email = $('account-email').value.trim();
+  const pwd   = $('account-email-pwd').value;
+  if (!email || !pwd) { toast('Email et mot de passe requis', false); return; }
+  try {
+    await api('PUT', '/api/admin/account', { email, currentPassword: pwd });
+    $('account-email-display').textContent = email;
+    $('account-email').value = ''; $('account-email-pwd').value = '';
+    toast('Email mis à jour');
+  } catch(e) { toast(e.message, false); }
+};
+
+$('save-password').onclick = async () => {
+  const cur = $('pwd-current').value;
+  const nw  = $('pwd-new').value;
+  const cnf = $('pwd-confirm').value;
+  if (!cur || !nw) { toast('Tous les champs sont requis', false); return; }
+  if (nw !== cnf)  { toast('Les mots de passe ne correspondent pas', false); return; }
+  try {
+    await api('PUT', '/api/admin/account', { currentPassword: cur, newPassword: nw });
+    $('pwd-current').value = ''; $('pwd-new').value = ''; $('pwd-confirm').value = '';
+    toast('Mot de passe modifié');
+  } catch(e) { toast(e.message, false); }
+};
+
+// ─── Generic delete ───────────────────────────────────────
+window.deleteItem = async (resource, id, reload) => {
+  if (!confirm('Supprimer définitivement cet élément ?')) return;
+  try { await api('DELETE', '/api/admin/' + resource + '/' + id); toast('Supprimé'); reload(); }
+  catch(e) { toast(e.message, false); }
+};
+
+// ─── Loaders map ──────────────────────────────────────────
+const loaders = { notice: loadNotice, news: loadNews, agenda: loadAgenda, palmares: loadPalmares, gallery: loadGallery, hours: loadHours, account: loadAccount };
+
+// ─── Init ─────────────────────────────────────────────────
+(async () => {
+  const ok = await checkAuth();
+  if (ok) { showPanel(); setupUpload(); loaders.notice(); }
+  else    { showLogin(); }
+})();
+</script>
+</body>
+</html>

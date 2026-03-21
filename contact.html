@@ -40,6 +40,8 @@
     <li><a href="disciplines.html">Disciplines</a></li>
     <li><a href="maps.html">Nos Sites</a></li>
     <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="palmares.html">Palmarès</a></li>
+    <li><a href="agenda.html">Agenda</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
   </div>
@@ -67,7 +69,7 @@
             <div>
               <div class="contact-info-label">Téléphone</div>
               <div class="contact-info-value">
-                <a href="tel:0950779753">09.50.77.97.53</a>
+                <a href="tel:0782476209">07 82 47 62 09</a>
               </div>
             </div>
           </div>
@@ -84,7 +86,7 @@
             <div class="contact-info-icon"><i class="bi bi-clock-fill"></i></div>
             <div>
               <div class="contact-info-label">Horaires d'accueil</div>
-              <div class="contact-info-value">Lundi : 13h30 – 15h30<br>Samedi : 08h00 – 12h00 / 13h30 – 15h30</div>
+              <div class="contact-info-value">Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></div>
             </div>
           </div>
           <div class="contact-info-item">
@@ -234,7 +236,7 @@
             <i class="bi bi-plus-circle-fill faq-icon" style="color:var(--gold);font-size:1.1rem;flex-shrink:0;"></i>
           </summary>
           <div style="padding:0 1.5rem 1.25rem;color:var(--muted);font-size:0.88rem;line-height:1.8;">
-            En règle générale, nos stands sont ouverts le samedi de 08h00 à 15h30. Les jours fériés tombant un samedi peuvent faire l'objet de fermetures exceptionnelles. Contactez-nous pour vérifier en cas de doute.
+            En règle générale, nos stands sont ouverts le lundi et le samedi de 08h00 à 12h00 et de 13h30 à 16h30. Les jours fériés peuvent faire l'objet de fermetures exceptionnelles. Contactez-nous pour vérifier en cas de doute.
           </div>
         </details>
 
@@ -256,6 +258,20 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
+  <div class="footer-logos">
+    <div class="footer-logos-title">Affiliations officielles</div>
+    <div class="footer-logos-list">
+      <a href="https://www.fftir.fr" target="_blank" rel="noopener" title="Fédération Française de Tir">
+        <img src="https://www.fftir.fr/wp-content/uploads/2019/06/logo-fftir-couleur.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
+      </a>
+      <a href="https://www.ipsc.org" target="_blank" rel="noopener" title="International Practical Shooting Confederation">
+        <img src="https://www.ipsc.org/wp-content/uploads/2020/09/IPSC-Logo.png" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
+      </a>
+      <a href="https://www.liguetiropaca.com" target="_blank" rel="noopener" title="Ligue de Tir PACA">
+        <img src="https://www.liguetiropaca.com/wp-content/uploads/logo-ligue-paca.png" alt="Ligue PACA" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>Ligue PACA</span>'">
+      </a>
+    </div>
+  </div>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
@@ -268,15 +284,17 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation</a></li>
         <li><a href="disciplines.html">Disciplines</a></li>
-    <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
         <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="palmares.html">Palmarès</a></li>
+        <li><a href="agenda.html">Agenda</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="tel:0782476209">07 82 47 62 09</a></li>
         <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
         <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
         <li><a href="maps.html">Toulon (83200)</a></li>
@@ -285,11 +303,6 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
-    <div class="footer-affiliations">
-      <span class="affil-badge">FFTIR</span>
-      <span class="affil-badge">IPSC</span>
-      <span class="affil-badge">Ligue PACA</span>
-    </div>
   </div>
 </footer>
 
@@ -316,7 +329,7 @@
     });
   });
 
-  // Form
+  // Form – envoi par email vers ctpv@orange.fr
   const form = document.getElementById('contact-form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -328,10 +341,28 @@
       document.getElementById('form-success').style.display = 'none';
       return;
     }
+    const prenom = document.getElementById('prenom').value.trim();
+    const nom    = document.getElementById('nom').value.trim();
+    const email  = document.getElementById('email').value.trim();
+    const tel    = document.getElementById('telephone').value.trim();
+    const sujet  = document.getElementById('sujet').value;
+    const msg    = document.getElementById('message').value.trim();
+
+    const subject = encodeURIComponent('[CTPV] ' + sujet + ' – ' + prenom + ' ' + nom);
+    const body = encodeURIComponent(
+      'De : ' + prenom + ' ' + nom + '\n' +
+      'Email : ' + email + '\n' +
+      (tel ? 'Téléphone : ' + tel + '\n' : '') +
+      'Sujet : ' + sujet + '\n\n' +
+      'Message :\n' + msg
+    );
+    window.location.href = 'mailto:ctpv@orange.fr?subject=' + subject + '&body=' + body;
+
     document.getElementById('form-error').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
     form.reset();
   });
 </script>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

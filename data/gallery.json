@@ -1,0 +1,110 @@
+[
+  {
+    "id": "id_gal_1",
+    "url": "https://picsum.photos/seed/ctpv-stand1/600/400",
+    "filename": null,
+    "title": "Stand longue distance – Le Revest",
+    "description": "Vue générale du stand CTPV 3 au Revest-les-Eaux.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_2",
+    "url": "https://picsum.photos/seed/ctpv-comp1/600/800",
+    "filename": null,
+    "title": "Championnat régional PACA",
+    "description": "Nos tireurs lors du championnat régional.",
+    "category": "competitions",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_3",
+    "url": "https://picsum.photos/seed/ctpv-vie1/600/400",
+    "filename": null,
+    "title": "Séance du samedi matin",
+    "description": "Les membres réunis sur le stand de Toulon.",
+    "category": "vie",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_4",
+    "url": "https://picsum.photos/seed/ctpv-form1/600/400",
+    "filename": null,
+    "title": "Initiation débutants",
+    "description": "Cours d'initiation encadré par nos moniteurs agréés.",
+    "category": "formation",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_5",
+    "url": "https://picsum.photos/seed/ctpv-stand2/600/800",
+    "filename": null,
+    "title": "Couloir de tir 300m",
+    "description": "Le couloir longue distance du site du Revest.",
+    "category": "stands",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_6",
+    "url": "https://picsum.photos/seed/ctpv-comp2/600/400",
+    "filename": null,
+    "title": "Podium – Palmarès 2025",
+    "description": "Remise des médailles au championnat PACA 2025.",
+    "category": "competitions",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_7",
+    "url": "https://picsum.photos/seed/ctpv-vie2/600/400",
+    "filename": null,
+    "title": "Assemblée générale 2025",
+    "description": "Réunion annuelle du club, bilan et projets.",
+    "category": "vie",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_8",
+    "url": "https://picsum.photos/seed/ctpv-form2/600/800",
+    "filename": null,
+    "title": "Formation TAR",
+    "description": "Stage de perfectionnement en Tir aux armes Réglementaires.",
+    "category": "formation",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_9",
+    "url": "https://picsum.photos/seed/ctpv-stand3/600/400",
+    "filename": null,
+    "title": "Stand de Toulon – Vue d'ensemble",
+    "description": "Le stand CTPV 4 avenue des Meuniers, Toulon.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_10",
+    "url": "https://picsum.photos/seed/ctpv-comp3/600/400",
+    "filename": null,
+    "title": "Compétition longue distance",
+    "description": "Épreuve TLD (300m) sur le stand du Revest.",
+    "category": "competitions",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_11",
+    "url": "https://picsum.photos/seed/ctpv-vie3/600/800",
+    "filename": null,
+    "title": "Journée portes ouvertes",
+    "description": "Nombreux visiteurs lors de notre journée découverte.",
+    "category": "vie",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_12",
+    "url": "https://picsum.photos/seed/ctpv-form3/600/400",
+    "filename": null,
+    "title": "Cours pistol 25m",
+    "description": "Initiation au pistolet 25 mètres pour les nouveaux licenciés.",
+    "category": "formation",
+    "isTall": false
+  }
+]

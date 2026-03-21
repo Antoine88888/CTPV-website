@@ -1,0 +1,6 @@
+{
+  "hours": {
+    "lundi":  { "open": true, "morning": "08h00 – 12h00", "afternoon": "13h30 – 16h30" },
+    "samedi": { "open": true, "morning": "08h00 – 12h00", "afternoon": "13h30 – 16h30" }
+  }
+}

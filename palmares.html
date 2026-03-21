@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CTPV – Club de Tir Police Varois</title>
+  <title>Palmarès – CTPV</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="theme.js"></script>
   <script src="transition.js" defer></script>
 </head>
-<body data-page="index">
+<body data-page="palmares">
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="navbar">
@@ -35,12 +35,12 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="index.html">Accueil</a></li>
     <li><a href="presentation.html">Le Club</a></li>
     <li><a href="disciplines.html">Disciplines</a></li>
     <li><a href="maps.html">Nos Sites</a></li>
     <li><a href="galerie.html">Galerie</a></li>
-    <li><a href="palmares.html">Palmarès</a></li>
+    <li><a href="palmares.html" class="active">Palmarès</a></li>
     <li><a href="agenda.html">Agenda</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -49,146 +49,100 @@
 
 <div class="page-content">
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content fade-up">
-      <div class="hero-badge">Affilié FFTIR · Var · Depuis 1974</div>
-      <h1>Club de Tir<br><span>Police Varois</span></h1>
-      <p>Un club ouvert à tous, pratiquant le tir sportif de compétition et de loisir sur deux sites dans le Var.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn-primary">Nous rejoindre</a>
-        <a href="presentation.html" class="btn-outline">Découvrir le club</a>
-      </div>
-    </div>
-  </section>
+  <!-- ═══ PAGE HERO ═══ -->
+  <div class="page-hero">
+    <div class="page-hero-label">Résultats & Distinctions</div>
+    <h1>Palmarès du CTPV</h1>
+    <p>Retrouvez ici les performances et titres remportés par les tireurs du Club de Tir Police Varois lors des compétitions régionales et nationales.</p>
+  </div>
 
   <!-- ═══ STATS ═══ -->
   <div class="stat-bar">
     <div class="stat-bar-inner">
       <div class="stat-item">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Sites de tir</div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Titres régionaux 2025</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">300m</div>
-        <div class="stat-label">Distance max.</div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">Podiums en 2025</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">50+</div>
-        <div class="stat-label">Ans d'expérience</div>
+        <div class="stat-label">Ans de compétition</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">FFTIR</div>
-        <div class="stat-label">Fédération affiliée</div>
+        <div class="stat-num">PACA</div>
+        <div class="stat-label">Ligue de référence</div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ NEWS ═══ -->
+  <!-- ═══ PALMARES 2025 ═══ -->
   <div class="section">
     <div class="section-header">
-      <span class="section-label">Actualités</span>
-      <h2>Dernières nouvelles du club</h2>
-      <p>Restez informés des événements, compétitions et nouveautés du CTPV.</p>
+      <span class="section-label">Saison 2025</span>
+      <h2>Championnat régional PACA</h2>
+      <p>Résultats obtenus par nos licenciés lors des épreuves FFTIR de la ligue PACA.</p>
       <div class="section-divider"></div>
     </div>
-    <div class="news-grid" id="news-grid">
+
+    <div class="palmares-grid" id="palmares-grid">
       <div class="ctpv-loading"><span class="ctpv-spinner"></span> Chargement…</div>
     </div>
   </div>
 
-  <!-- ═══ DISCIPLINES ═══ -->
+  <!-- ═══ PALMARES HISTORIQUE ═══ -->
   <div style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="section">
       <div class="section-header">
-        <span class="section-label">Disciplines</span>
-        <h2>Ce que nous pratiquons</h2>
-        <p>Le CTPV offre une large gamme de disciplines pour tous les niveaux et toutes les passions.</p>
+        <span class="section-label">Historique</span>
+        <h2>Palmarès des saisons précédentes</h2>
+        <p>Un aperçu des résultats marquants des dernières années.</p>
         <div class="section-divider"></div>
       </div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-bullseye"></i></div>
-          <h3>Tir au pistolet</h3>
-          <p>Armes de poing à 25 mètres. Disciplines sportives et de précision.</p>
-        </div>
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-crosshair"></i></div>
-          <h3>Tir à la carabine</h3>
-          <p>Armes d'épaule de 50 à 300 mètres sur nos deux stands.</p>
-        </div>
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-crosshair2"></i></div>
-          <h3>Tir au fusil</h3>
-          <p>Cours dédiés aux armes longues à canon lisse.</p>
-        </div>
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-shield-fill"></i></div>
-          <h3>TAR – Réglementaire</h3>
-          <p>Tir Aux armes Réglementaires, parcours homologué FFTIR.</p>
-        </div>
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-trophy-fill"></i></div>
-          <h3>Compétition</h3>
-          <p>Participation aux championnats régionaux et nationaux FFTIR.</p>
-        </div>
-        <div class="disc-card">
-          <div class="disc-icon"><i class="bi bi-mortarboard-fill"></i></div>
-          <h3>Initiation</h3>
-          <p>Formations pour débutants encadrées par nos moniteurs agréés.</p>
-        </div>
+
+      <div id="palmares-historique" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+        <div class="ctpv-loading"><span class="ctpv-spinner"></span> Chargement…</div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ INFO BAND ═══ -->
+  <!-- ═══ CTA ═══ -->
   <div class="info-band">
     <div class="info-band-inner">
       <div>
-        <span class="section-label">Pratique</span>
-        <h2 style="margin: 0.5rem 0 0">Horaires & Accès</h2>
+        <span class="section-label">Compétitions</span>
+        <h2 style="margin: 0.5rem 0 0">Envie de concourir ?</h2>
         <ul class="info-list">
           <li>
-            <span class="icon"><i class="bi bi-clock-fill"></i></span>
+            <span class="icon"><i class="bi bi-trophy-fill"></i></span>
             <div>
-              <div class="label">Horaires d'ouverture</div>
-              <div class="value">Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></div>
+              <div class="label">Championnats PACA</div>
+              <div class="value">Ouverts à tous les licenciés FFTIR du club</div>
             </div>
           </li>
           <li>
-            <span class="icon"><i class="bi bi-telephone-fill"></i></span>
+            <span class="icon"><i class="bi bi-flag-fill"></i></span>
             <div>
-              <div class="label">Téléphone</div>
-              <div class="value"><a href="tel:0782476209">07 82 47 62 09</a></div>
+              <div class="label">Compétitions nationales</div>
+              <div class="value">Sélection sur critères de performance régionale</div>
             </div>
           </li>
           <li>
-            <span class="icon"><i class="bi bi-envelope-fill"></i></span>
+            <span class="icon"><i class="bi bi-calendar2-event-fill"></i></span>
             <div>
-              <div class="label">Email</div>
-              <div class="value"><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></div>
-            </div>
-          </li>
-          <li>
-            <span class="icon"><i class="bi bi-geo-alt-fill"></i></span>
-            <div>
-              <div class="label">Sites</div>
-              <div class="value">Le Revest-Les-Eaux & Toulon (83)</div>
+              <div class="label">Agenda des épreuves</div>
+              <div class="value"><a href="agenda.html">Consultez le calendrier compétitif</a></div>
             </div>
           </li>
         </ul>
       </div>
       <div>
-        <span class="section-label">Adhésion</span>
-        <h2 style="margin: 0.5rem 0 1rem">Rejoignez le club</h2>
+        <span class="section-label">Participer</span>
+        <h2 style="margin: 0.5rem 0 1rem">Rejoignez nos compétiteurs</h2>
         <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.25rem;">
-          Le CTPV accueille les tireurs de tous niveaux, débutants comme confirmés.
-          La pratique du tir sportif est ouverte à toute personne majeure titulaire d'une licence FFTIR valide.
-        </p>
-        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem;">
-          Pour adhérer, contactez-nous par téléphone ou email, ou rendez-vous directement
-          sur l'un de nos sites le samedi matin.
+          Tout licencié FFTIR au CTPV peut participer aux compétitions régionales PACA selon son niveau et sa discipline de prédilection. Nos moniteurs vous accompagnent dans cette démarche.
         </p>
         <a href="contact.html" class="btn-primary">Nous contacter</a>
       </div>
@@ -225,7 +179,7 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation</a></li>
         <li><a href="disciplines.html">Disciplines</a></li>
-    <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
         <li><a href="galerie.html">Galerie</a></li>
         <li><a href="palmares.html">Palmarès</a></li>
         <li><a href="agenda.html">Agenda</a></li>

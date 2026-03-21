@@ -1,0 +1,101 @@
+[
+  {
+    "id": "id_pal_1",
+    "medal": "or",
+    "athleteName": "Équipe CTPV – PR22",
+    "eventName": "Championnat PACA · Équipes · 2025",
+    "season": "2025",
+    "tags": ["Or", "PR22", "Équipes"],
+    "tagColors": ["gold", "", ""],
+    "description": "Victoire de l'équipe CTPV lors du championnat régional PACA dans la discipline Précision Rifle .22 LR, catégorie équipes mixtes.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_2",
+    "medal": "or",
+    "athleteName": "Jean-Pierre M.",
+    "eventName": "Championnat PACA · Individuel · 2025",
+    "season": "2025",
+    "tags": ["Or", "TAR", "Individuel"],
+    "tagColors": ["gold", "", ""],
+    "description": "Champion régional PACA en Tir aux armes Réglementaires, catégorie adultes. Score record sur le parcours homologué du Revest.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_3",
+    "medal": "argent",
+    "athleteName": "Marie-Claire D.",
+    "eventName": "Championnat PACA · Individuel · 2025",
+    "season": "2025",
+    "tags": ["Argent", "PR22", "Dames"],
+    "tagColors": ["", "", ""],
+    "description": "Vice-championne régionale PACA en PR22, catégorie dames. Excellente prestation sur le stand de 50 mètres.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_4",
+    "medal": "or",
+    "athleteName": "Robert F.",
+    "eventName": "Championnat PACA · Individuel · 2025",
+    "season": "2025",
+    "tags": ["Or", "TLD", "Individuel"],
+    "tagColors": ["gold", "", ""],
+    "description": "Champion régional PACA en Tir Longue Distance (300m). Résultat exceptionnel sur le stand du Revest-les-Eaux.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_5",
+    "medal": "bronze",
+    "athleteName": "Sophie L.",
+    "eventName": "Championnat National · Individuel · 2025",
+    "season": "2025",
+    "tags": ["Bronze", "PST 25m", "National"],
+    "tagColors": ["", "", ""],
+    "description": "3e place lors du championnat national FFTIR en pistolet 25m, catégorie dames. Une belle représentation du CTPV au niveau national.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_6",
+    "medal": "argent",
+    "athleteName": "Équipe CTPV – TSV",
+    "eventName": "Championnat PACA · Équipes · 2025",
+    "season": "2025",
+    "tags": ["Argent", "TSV", "Équipes"],
+    "tagColors": ["", "", ""],
+    "description": "2e place en Tir de Vitesse par équipes au championnat régional PACA. Une belle progression pour notre équipe de TSV.",
+    "isHistorique": false
+  },
+  {
+    "id": "id_pal_hist_2024",
+    "medal": "or",
+    "athleteName": "Saison 2024",
+    "eventName": "Championnats régionaux PACA 2024",
+    "season": "2024",
+    "tags": ["Historique"],
+    "tagColors": [""],
+    "description": "🥇 Champion PACA PR22 équipes · 🥈 Vice-champion PACA TAR individuel · 🥉 3e PACA TLD individuel · 5 qualifications en finale nationale",
+    "isHistorique": true
+  },
+  {
+    "id": "id_pal_hist_2023",
+    "medal": "or",
+    "athleteName": "Saison 2023",
+    "eventName": "Championnats régionaux & nationaux 2023",
+    "season": "2023",
+    "tags": ["Historique"],
+    "tagColors": [""],
+    "description": "🥇 Champion PACA TAR individuel · 🥇 Champion PACA PST 25m dames · 🥈 Vice-champion national PR22 · 8 podiums régionaux au total",
+    "isHistorique": true
+  },
+  {
+    "id": "id_pal_hist_2022",
+    "medal": "or",
+    "athleteName": "Saison 2022",
+    "eventName": "Reprises après COVID – Championnats PACA 2022",
+    "season": "2022",
+    "tags": ["Historique"],
+    "tagColors": [""],
+    "description": "🥇 Champion PACA TLD équipes · 🥉 3e PACA TAR équipes · Première participation nationale en TSV · 6 podiums régionaux",
+    "isHistorique": true
+  }
+]

@@ -1,0 +1,85 @@
+[
+  {
+    "id": "id_1774116956572_8143d2",
+    "title": "Titre test",
+    "tag": "Catégorie test",
+    "date": "2026-03-21",
+    "dateLabel": "15 mars 2026",
+    "summary": "Résumé test",
+    "imageUrl": "https://images.frankonia.fr/fsicache/server?type=image&source=products/p146441_ha.jpg&width=1000&height=300&effects=pad(CC,ffff)&quality=40",
+    "linkLabel": "Lire la suite test",
+    "linkHref": "https://www.google.com/"
+  },
+  {
+    "id": "id_news_1",
+    "title": "Championnat régional PACA 2026",
+    "tag": "Compétition",
+    "date": "2026-03-15",
+    "dateLabel": "15 mars 2026",
+    "summary": "Nos tireurs ont brillé lors du championnat régional. Bravo à toute l'équipe pour ses excellentes performances !",
+    "imageUrl": "https://picsum.photos/seed/ctpv-trophy/600/360",
+    "imageAlt": "Championnat régional PACA 2026",
+    "linkLabel": "Lire la suite",
+    "linkHref": "#"
+  },
+  {
+    "id": "id_news_2",
+    "title": "Journée portes ouvertes – Printemps 2026",
+    "tag": "Événement",
+    "date": "2026-02-01",
+    "dateLabel": "1 février 2026",
+    "summary": "Venez découvrir le tir sportif lors de notre journée portes ouvertes. Initiations gratuites, animations et rencontres avec nos licenciés.",
+    "imageUrl": "https://picsum.photos/seed/ctpv-event/600/360",
+    "imageAlt": "Journée portes ouvertes",
+    "linkLabel": "S'inscrire",
+    "linkHref": "contact.html"
+  },
+  {
+    "id": "id_news_3",
+    "title": "Bonne et heureuse année 2026 !",
+    "tag": "Annonce",
+    "date": "2026-01-01",
+    "dateLabel": "1 janvier 2026",
+    "summary": "Toute l'équipe du CTPV vous souhaite une excellente année 2026, pleine de succès sur les pas de tir !",
+    "imageUrl": "https://picsum.photos/seed/ctpv-newyear/600/360",
+    "imageAlt": "Bonne année 2026",
+    "linkLabel": "Lire la suite",
+    "linkHref": "#"
+  },
+  {
+    "id": "id_news_4",
+    "title": "Renouvellement des licences 2026",
+    "tag": "Information",
+    "date": "2024-11-10",
+    "dateLabel": "10 novembre 2024",
+    "summary": "La période de renouvellement des licences FFTIR est ouverte. Contactez-nous pour effectuer votre réinscription pour la saison 2026.",
+    "imageUrl": "https://picsum.photos/seed/ctpv-license/600/360",
+    "imageAlt": "Renouvellement des licences",
+    "linkLabel": "Nous contacter",
+    "linkHref": "contact.html"
+  },
+  {
+    "id": "id_news_5",
+    "title": "Nouveau cours d'initiation au TAR",
+    "tag": "Formation",
+    "date": "2024-10-20",
+    "dateLabel": "20 octobre 2024",
+    "summary": "Un nouveau parcours de tir réglementaire aux armes est disponible sur notre site du Revest. Réservez votre place !",
+    "imageUrl": "https://picsum.photos/seed/ctpv-training/600/360",
+    "imageAlt": "Cours d'initiation TAR",
+    "linkLabel": "En savoir plus",
+    "linkHref": "contact.html"
+  },
+  {
+    "id": "id_news_6",
+    "title": "Assemblée générale – Bilan de saison",
+    "tag": "Club",
+    "date": "2024-09-05",
+    "dateLabel": "5 septembre 2024",
+    "summary": "Retour sur une saison riche : nouvelles installations, résultats en compétitions et projets pour 2026. Retrouvez le compte-rendu complet.",
+    "imageUrl": "https://picsum.photos/seed/ctpv-meeting/600/360",
+    "imageAlt": "Assemblée générale",
+    "linkLabel": "Lire la suite",
+    "linkHref": "#"
+  }
+]

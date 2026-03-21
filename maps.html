@@ -166,6 +166,8 @@
     <li><a href="disciplines.html">Disciplines</a></li>
     <li><a href="maps.html" class="active">Nos Sites</a></li>
     <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="palmares.html">Palmarès</a></li>
+    <li><a href="agenda.html">Agenda</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   </div>
@@ -202,7 +204,7 @@
           </address>
           <div class="map-details">
             <div class="map-detail-row"><i class="bi bi-crosshair" style="color:var(--gold);"></i><span>Longues distances : 50, 100, 200 et 300 m</span></div>
-            <div class="map-detail-row"><i class="bi bi-clock-fill" style="color:var(--gold);"></i><span>Lundi : 13h30 – 15h30<br>Samedi : 08h00 – 12h00 / 13h30 – 15h30</span></div>
+            <div class="map-detail-row"><i class="bi bi-clock-fill" style="color:var(--gold);"></i><span>Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></span></div>
             <div class="map-detail-row"><i class="bi bi-compass" style="color:var(--gold);"></i><span>GPS : 43°11'0.47"N 5°57'20.79"E</span></div>
           </div>
         </div>
@@ -227,7 +229,7 @@
           <div class="map-details">
             <div class="map-detail-row"><i class="bi bi-bullseye" style="color:var(--gold);"></i><span>Tir à l'arme de poing : 25 m</span></div>
             <div class="map-detail-row"><i class="bi bi-building-fill" style="color:var(--gold);"></i><span>Siège administratif du club</span></div>
-            <div class="map-detail-row"><i class="bi bi-clock-fill" style="color:var(--gold);"></i><span>Lundi : 13h30 – 15h30<br>Samedi : 08h00 – 12h00 / 13h30 – 15h30</span></div>
+            <div class="map-detail-row"><i class="bi bi-clock-fill" style="color:var(--gold);"></i><span>Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></span></div>
           </div>
         </div>
       </div>
@@ -263,7 +265,7 @@
           <div class="sir-icon"><i class="bi bi-clock-fill"></i></div>
           <div>
             <div class="sir-label">Horaires</div>
-            <div class="sir-value">Lundi : 13h30 – 15h30<br>Samedi : 08h00 – 12h00 / 13h30 – 15h30</div>
+            <div class="sir-value">Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></div>
           </div>
         </div>
         <div class="site-info-row">
@@ -364,7 +366,7 @@
           <div class="sir-icon"><i class="bi bi-clock-fill"></i></div>
           <div>
             <div class="sir-label">Horaires</div>
-            <div class="sir-value">Lundi : 13h30 – 15h30<br>Samedi : 08h00 – 12h00 / 13h30 – 15h30</div>
+            <div class="sir-value">Lundi : <span data-slot="hours-lundi">08h00 – 12h00 / 13h30 – 16h30</span><br>Samedi : <span data-slot="hours-samedi">08h00 – 12h00 / 13h30 – 16h30</span></div>
           </div>
         </div>
         <div class="site-info-row">
@@ -391,7 +393,7 @@
           <div class="sir-icon"><i class="bi bi-telephone-fill"></i></div>
           <div>
             <div class="sir-label">Téléphone</div>
-            <div class="sir-value"><a href="tel:0950779753">09.50.77.97.53</a></div>
+            <div class="sir-value"><a href="tel:0782476209">07 82 47 62 09</a></div>
           </div>
         </div>
         <div class="site-info-row">
@@ -443,6 +445,20 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
+  <div class="footer-logos">
+    <div class="footer-logos-title">Affiliations officielles</div>
+    <div class="footer-logos-list">
+      <a href="https://www.fftir.fr" target="_blank" rel="noopener" title="Fédération Française de Tir">
+        <img src="https://www.fftir.fr/wp-content/uploads/2019/06/logo-fftir-couleur.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
+      </a>
+      <a href="https://www.ipsc.org" target="_blank" rel="noopener" title="International Practical Shooting Confederation">
+        <img src="https://www.ipsc.org/wp-content/uploads/2020/09/IPSC-Logo.png" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
+      </a>
+      <a href="https://www.liguetiropaca.com" target="_blank" rel="noopener" title="Ligue de Tir PACA">
+        <img src="https://www.liguetiropaca.com/wp-content/uploads/logo-ligue-paca.png" alt="Ligue PACA" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>Ligue PACA</span>'">
+      </a>
+    </div>
+  </div>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="brand-title" style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;">CTPV</div>
@@ -455,15 +471,17 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation</a></li>
         <li><a href="disciplines.html">Disciplines</a></li>
-    <li><a href="maps.html">Nos Sites</a></li>
+        <li><a href="maps.html">Nos Sites</a></li>
         <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="palmares.html">Palmarès</a></li>
+        <li><a href="agenda.html">Agenda</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="tel:0950779753">09.50.77.97.53</a></li>
+        <li><a href="tel:0782476209">07 82 47 62 09</a></li>
         <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
         <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
         <li><a href="maps.html">Toulon (83200)</a></li>
@@ -472,11 +490,6 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 CTPV – Club de Tir Police Varois. Tous droits réservés.</p>
-    <div class="footer-affiliations">
-      <span class="affil-badge">FFTIR</span>
-      <span class="affil-badge">IPSC</span>
-      <span class="affil-badge">Ligue PACA</span>
-    </div>
   </div>
 </footer>
 
@@ -488,5 +501,6 @@
     navLinks.classList.toggle('open');
   });
 </script>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

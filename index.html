@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -57,8 +57,12 @@
       <h1>Club de Tir<br><span>Police Varois</span></h1>
       <p>Un club ouvert à tous, pratiquant le tir sportif de compétition et de loisir sur deux sites dans le Var.</p>
       <div class="hero-actions">
-        <a href="contact.html" class="btn-primary">Nous rejoindre</a>
+        <a href="rejoindre.html" class="btn-primary">Nous rejoindre</a>
         <a href="presentation.html" class="btn-outline">Découvrir le club</a>
+        <div style="flex-basis:100%;height:0;"></div>
+        <a href="offres.html#forces" class="btn-outline">Spécificités forces de l'ordre</a>
+        <a href="offres.html#initiation" class="btn-outline">Séance d'initiation</a>
+        <a href="offres.html#ce" class="btn-outline">Journée découverte CE</a>
       </div>
     </div>
   </section>
@@ -82,6 +86,57 @@
         <div class="stat-num">FFTIR</div>
         <div class="stat-label">Fédération affiliée</div>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══ SERVICES ═══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Nos offres</span>
+      <h2>Pour tous les publics</h2>
+      <p>Du pratiquant civil aux forces de l'ordre et aux comités d'entreprise, le CTPV propose des formules adaptées à chaque profil.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="disc-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+
+      <div class="disc-card" style="align-items:flex-start;text-align:left;">
+        <div class="disc-icon" style="margin:0 0 1rem 0;"><i class="bi bi-shield-shaded"></i></div>
+        <h3 style="text-align:left;">Spécificités forces de l'ordre</h3>
+        <p style="text-align:left;">
+          Nous proposons, exclusivement aux forces de l'ordre, des séances d'entraînement réalisées sous couvert de la <strong>FEMES</strong> et de la <strong>FSPN</strong>, sur des cibles spécifiques avec les armes de service.
+          <br><br>
+          Pour les entités administratives (police nationale, gendarmerie nationale, police municipale, administration pénitentiaire, douanes, gardes armées, agents de protection), nous établissons des conventions pour les formations initiales et continues, encadrées par leurs propres formateurs.
+          <br><br>
+          Nos installations incluent un <strong>ciné-tir</strong> et un <strong>vidéo-tir</strong>, disponibles en milieu fermé au <strong>CTPV 4 uniquement</strong>.
+        </p>
+      </div>
+
+      <div class="disc-card" style="align-items:flex-start;text-align:left;">
+        <div class="disc-icon" style="margin:0 0 1rem 0;"><i class="bi bi-mortarboard-fill"></i></div>
+        <h3 style="text-align:left;">Séance d'initiation</h3>
+        <p style="text-align:left;">
+          Sous couvert de la Fédération Française de Tir, nous proposons des séances de découverte du tir sportif, encadrées par nos moniteurs agréés.
+          <br><br>
+          Pour vous inscrire, il vous suffit de prendre rendez-vous après nous avoir adressé un CV succinct (nom, prénom, date et lieu de naissance) nécessaire à la souscription de votre assurance.
+          <br><br>
+          <strong>Tarif : 35 €</strong> + prix de la boîte de cartouches. Les armes sont mises à disposition.
+        </p>
+        <a href="contact.html" class="btn-primary" style="margin-top:1rem;font-size:0.85rem;">Prendre rendez-vous</a>
+      </div>
+
+      <div class="disc-card" style="align-items:flex-start;text-align:left;">
+        <div class="disc-icon" style="margin:0 0 1rem 0;"><i class="bi bi-building-fill"></i></div>
+        <h3 style="text-align:left;">Journée découverte CE</h3>
+        <p style="text-align:left;">
+          Sous couvert de la Fédération Française de Tir, nous organisons des journées de découverte du tir sportif à destination des <strong>comités d'entreprise</strong>, encadrées par nos moniteurs agréés.
+          <br><br>
+          Cette formule allie initiation aux différentes disciplines de tir et moment convivial autour d'un repas préparé par notre traiteur partenaire (<em>Méridien</em>). La réservation s'effectue sur rendez-vous, après envoi d'un CV succinct (nom, prénom, date et lieu de naissance) pour chaque participant.
+          <br><br>
+          <strong>Tarif CE : de 70 € à 90 € par personne</strong> selon la formule choisie.
+        </p>
+        <a href="contact.html" class="btn-primary" style="margin-top:1rem;font-size:0.85rem;">Nous contacter</a>
+      </div>
+
     </div>
   </div>
 
@@ -159,15 +214,29 @@
           <li>
             <span class="icon"><i class="bi bi-telephone-fill"></i></span>
             <div>
-              <div class="label">Téléphone</div>
-              <div class="value"><a href="tel:0782476209">07 82 47 62 09</a></div>
+              <div class="label">Téléphone du club</div>
+              <div class="value"><a data-contact="club-phone" href="tel:0782476209">07 82 47 62 09</a></div>
+            </div>
+          </li>
+          <li>
+            <span class="icon"><i class="bi bi-person-badge-fill"></i></span>
+            <div>
+              <div class="label"><span data-contact="president-name">Président (Gilbert)</span></div>
+              <div class="value"><a data-contact="president-phone" href="tel:0673004109">06 73 00 41 09</a><br><small style="color:var(--muted);font-size:0.75rem;">Lundi &amp; samedi, aux heures d'ouverture</small></div>
+            </div>
+          </li>
+          <li>
+            <span class="icon"><i class="bi bi-person-badge-fill"></i></span>
+            <div>
+              <div class="label"><span data-contact="secretaire-name">Secrétaire (Évelyne)</span></div>
+              <div class="value"><a data-contact="secretaire-phone" href="tel:0679012283">06 79 01 22 83</a><br><small style="color:var(--muted);font-size:0.75rem;">Lundi &amp; samedi, aux heures d'ouverture</small></div>
             </div>
           </li>
           <li>
             <span class="icon"><i class="bi bi-envelope-fill"></i></span>
             <div>
               <div class="label">Email</div>
-              <div class="value"><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></div>
+              <div class="value"><a data-contact="club-email" href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></div>
             </div>
           </li>
           <li>
@@ -203,7 +272,7 @@
     <div class="footer-logos-title">Affiliations officielles</div>
     <div class="footer-logos-list">
       <a href="https://www.fftir.fr" target="_blank" rel="noopener" title="Fédération Française de Tir">
-        <img src="https://www.fftir.fr/wp-content/uploads/2019/06/logo-fftir-couleur.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
+        <img src="https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
       </a>
       <a href="https://www.ipsc.org" target="_blank" rel="noopener" title="International Practical Shooting Confederation">
         <img src="https://www.ipsc.org/wp-content/uploads/2020/09/IPSC-Logo.png" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
@@ -235,8 +304,10 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="tel:0782476209">07 82 47 62 09</a></li>
-        <li><a href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><a data-contact="club-phone" href="tel:0782476209">07 82 47 62 09</a></li>
+        <li><a data-contact="club-email" href="mailto:ctpv@orange.fr">ctpv@orange.fr</a></li>
+        <li><span data-contact="president-name">Président (Gilbert)</span><br><a data-contact="president-phone" href="tel:0673004109">06 73 00 41 09</a></li>
+        <li><span data-contact="secretaire-name">Secrétaire (Évelyne)</span><br><a data-contact="secretaire-phone" href="tel:0679012283">06 79 01 22 83</a></li>
         <li><a href="maps.html">Le Revest-les-Eaux (83200)</a></li>
         <li><a href="maps.html">Toulon (83200)</a></li>
       </ul>

@@ -1,0 +1,28 @@
+{
+  "season": "2025-2026",
+  "droitEntree": "",
+  "licence": "",
+  "carnetTir": "",
+  "pdf": {
+    "clubName": "CLUB DE TIR POLICE VAROIS",
+    "clubSubtitle": "Affilie a la Federation Francaise de Tir (FFTIR)",
+    "clubAddress": "245 av. des Meuniers, 83200 Toulon",
+    "clubEmail": "ctpv@orange.fr",
+    "formTitle": "BULLETIN D'ADHESION",
+    "sectionIdentite": "Informations personnelles",
+    "sectionParrain": "Informations du parrain policier",
+    "sectionEngagement": "Engagement",
+    "engagementText": "declare respecter l'ethique sportive, avoir pris connaissance et m'engage a appliquer les reglements interieurs du CTPV.",
+    "sectionDocuments": "Documents a fournir",
+    "documents": [
+      "Ce formulaire complete et signe",
+      "Certificat medical d'aptitude a la pratique du tir sportif",
+      "3 photos d'identite",
+      "Acquittement du droit d'entree{droitEntree}",
+      "Acquittement de la licence FFTIR{licence}",
+      "Achat du carnet de tir{carnetTir}",
+      "Photocopie de la carte nationale d'identite",
+      "Extrait de casier judiciaire B3  -  https://www.cjn.justice.gouv.fr/cjn/b3/eje20"
+    ]
+  }
+}

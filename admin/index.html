@@ -68,6 +68,8 @@
       <a data-panel="palmares"><i class="bi bi-trophy-fill"></i> Palmarès</a>
       <a data-panel="gallery"> <i class="bi bi-images"></i> Galerie</a>
       <a data-panel="hours">   <i class="bi bi-clock-fill"></i> Horaires</a>
+      <a data-panel="membership"><i class="bi bi-file-earmark-person-fill"></i> Fiche adhésion</a>
+      <a data-panel="contacts"><i class="bi bi-telephone-fill"></i> Contacts</a>
       <a data-panel="account"> <i class="bi bi-person-fill"></i> Mon compte</a>
     </nav>
     <div class="sidebar-footer">
@@ -273,6 +275,209 @@
       </div>
     </div>
 
+    <!-- ── FICHE ADHÉSION ── -->
+    <div id="panel-membership" class="panel-section">
+      <div class="panel-header">
+        <h2><i class="bi bi-file-earmark-person-fill" style="color:var(--gold)"></i> Fiche d'adhésion (PDF)</h2>
+        <div class="header-right">
+          <a href="/api/membership-form" target="_blank" class="btn-primary" style="text-decoration:none;"><i class="bi bi-download"></i> Télécharger le PDF actuel</a>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.85rem;">Le PDF est régénéré automatiquement à chaque téléchargement avec les informations ci-dessous. Il est accessible via le bouton « Nous rejoindre » de la page d'accueil.</p>
+
+      <div class="admin-card">
+        <div class="admin-card-header">Paramètres du bulletin</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Saison en cours</label>
+              <input type="text" id="mbr-season" placeholder="2025-2026">
+              <div class="input-note">S'affiche dans le titre du bulletin.</div>
+            </div>
+            <div class="form-group">
+              <label>Droit d'entrée (montant)</label>
+              <input type="text" id="mbr-droit" placeholder="Ex : 20 €">
+              <div class="input-note">Injecté automatiquement via <code>{droitEntree}</code>.</div>
+            </div>
+            <div class="form-group">
+              <label>Licence FFTIR (montant)</label>
+              <input type="text" id="mbr-licence" placeholder="Ex : 45 €">
+            </div>
+            <div class="form-group">
+              <label>Carnet de tir (montant)</label>
+              <input type="text" id="mbr-carnet" placeholder="Ex : 5 €">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">En-tête du bulletin</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group form-span-2">
+              <label>Nom du club</label>
+              <input type="text" id="pdf-clubName" placeholder="CLUB DE TIR POLICE VAROIS">
+            </div>
+            <div class="form-group form-span-2">
+              <label>Affiliation / sous-titre</label>
+              <input type="text" id="pdf-clubSubtitle" placeholder="Affilie a la Federation Francaise de Tir (FFTIR)">
+            </div>
+            <div class="form-group">
+              <label>Adresse du siège</label>
+              <input type="text" id="pdf-clubAddress" placeholder="245 av. des Meuniers, 83200 Toulon">
+            </div>
+            <div class="form-group">
+              <label>Email affiché</label>
+              <input type="text" id="pdf-clubEmail" placeholder="ctpv@orange.fr">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Titre et sections du formulaire</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group form-span-2">
+              <label>Titre du formulaire</label>
+              <input type="text" id="pdf-formTitle" placeholder="BULLETIN D'ADHESION">
+            </div>
+            <div class="form-group">
+              <label>Section identité</label>
+              <input type="text" id="pdf-secIdentite" placeholder="Informations personnelles">
+            </div>
+            <div class="form-group">
+              <label>Section parrain</label>
+              <input type="text" id="pdf-secParrain" placeholder="Informations du parrain policier">
+            </div>
+            <div class="form-group">
+              <label>Section engagement</label>
+              <input type="text" id="pdf-secEngagement" placeholder="Engagement">
+            </div>
+            <div class="form-group">
+              <label>Section documents</label>
+              <input type="text" id="pdf-secDocuments" placeholder="Documents a fournir">
+            </div>
+            <div class="form-group form-span-2">
+              <label>Texte de l'engagement (serment)</label>
+              <textarea id="pdf-engagementText" rows="3" placeholder="declare respecter l'ethique sportive…"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Liste des documents à fournir</div>
+        <div class="admin-card-body">
+          <div class="form-group">
+            <label>Un document par ligne</label>
+            <textarea id="pdf-documents" rows="9" style="font-size:0.82rem;font-family:monospace;"></textarea>
+            <div class="input-note">
+              Utilisez <code>{droitEntree}</code>, <code>{licence}</code>, <code>{carnetTir}</code> comme espaces réservés pour les montants définis ci-dessus.
+              Ex : <em>Acquittement du droit d'entree{droitEntree}</em>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button class="btn-primary" id="save-membership"><i class="bi bi-check-lg"></i> Enregistrer tout</button>
+            <a href="/api/membership-form" target="_blank" class="btn-secondary" style="text-decoration:none;"><i class="bi bi-eye"></i> Prévisualiser le PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CONTACTS ── -->
+    <div id="panel-contacts" class="panel-section">
+      <div class="panel-header"><h2><i class="bi bi-telephone-fill" style="color:var(--gold)"></i> Contacts</h2></div>
+      <p style="color:var(--muted);font-size:0.85rem;">Ces informations s'affichent dynamiquement sur l'ensemble du site (accueil, page contact, footer, etc.).</p>
+
+      <div class="admin-card">
+        <div class="admin-card-header">Coordonnées générales du club</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Téléphone du club</label>
+              <input type="tel" id="contact-club-phone" placeholder="07 82 47 62 09">
+            </div>
+            <div class="form-group">
+              <label>Adresse e-mail</label>
+              <input type="email" id="contact-club-email" placeholder="ctpv@orange.fr">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Président</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" id="contact-president-name" placeholder="Gilbert">
+            </div>
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="tel" id="contact-president-phone" placeholder="06 73 00 41 09">
+            </div>
+          </div>
+          <div class="input-note" style="margin-top:0.5rem;">Joignable lundi et samedi aux heures d'ouverture — indiqué automatiquement sur le site.</div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Secrétaire</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" id="contact-secretaire-name" placeholder="Eveline">
+            </div>
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="tel" id="contact-secretaire-phone" placeholder="06 79 01 22 83">
+            </div>
+          </div>
+          <div class="input-note" style="margin-top:0.5rem;">Joignable lundi et samedi aux heures d'ouverture — indiqué automatiquement sur le site.</div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Site CTPV 3 – Le Revest</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Rue / Voie</label>
+              <input type="text" id="site3-street" placeholder="Chemin de Tourris">
+            </div>
+            <div class="form-group">
+              <label>Code postal + Ville</label>
+              <input type="text" id="site3-city" placeholder="83200 Le Revest-les-Eaux">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top:1.25rem;">
+        <div class="admin-card-header">Site CTPV 4 – Toulon (siège)</div>
+        <div class="admin-card-body">
+          <div class="form-grid" style="gap:1.25rem;">
+            <div class="form-group">
+              <label>Rue / Voie</label>
+              <input type="text" id="site4-street" placeholder="245 avenue des Meuniers">
+            </div>
+            <div class="form-group">
+              <label>Code postal + Ville</label>
+              <input type="text" id="site4-city" placeholder="83200 Toulon">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <button class="btn-primary" id="save-contacts"><i class="bi bi-check-lg"></i> Enregistrer les contacts</button>
+      </div>
+    </div>
+
     <!-- ── MON COMPTE ── -->
     <div id="panel-account" class="panel-section">
       <div class="panel-header"><h2><i class="bi bi-person-fill" style="color:var(--gold)"></i> Mon compte</h2></div>
@@ -345,7 +550,10 @@ async function api(method, url, data) {
   const opts = { method, credentials: 'include', headers: {} };
   if (data) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(data); }
   const r = await fetch(url, opts);
-  const j = await r.json();
+  const text = await r.text();
+  if (!text) throw new Error('Réponse vide du serveur (redémarrez le serveur)');
+  let j;
+  try { j = JSON.parse(text); } catch { throw new Error('Réponse invalide du serveur'); }
   if (!r.ok) throw new Error(j.error || 'Erreur serveur');
   return j;
 }
@@ -563,13 +771,43 @@ async function loadAgenda() {
     </div>`).join('') + '</div>';
 }
 
+const AGENDA_CATS = [
+  { label: '— Catégorie rapide —',          value: '' },
+  { label: 'Compétition FEMES (forces de l\'ordre)', value: 'FEMES' },
+  { label: 'Compétition TSV – Handgun',     value: 'TSV · Handgun' },
+  { label: 'Compétition TSV – Shotgun',     value: 'TSV · Shotgun' },
+  { label: 'Compétition TSV – Rifle',       value: 'TSV · Rifle' },
+  { label: 'Compétition Steel Challenge',   value: 'Steel Challenge' },
+  { label: 'Compétition FFT – 10m',         value: 'FFT · 10m' },
+  { label: 'Compétition FFT – 25m',         value: 'FFT · 25m' },
+  { label: 'Compétition FFT – TAR',         value: 'FFT · TAR' },
+  { label: 'Compétition PR',               value: 'Précision Rifle' },
+  { label: 'Compétition TLD',              value: 'TLD' },
+  { label: 'Entraînement',                 value: 'Entraînement' },
+  { label: 'Événement club',               value: 'Événement club' },
+];
+
+window.addQuickAgendaTag = function() {
+  const val = $('m-quick-cat') && $('m-quick-cat').value;
+  if (val) addTag('m-tags-container', val);
+};
+
 function agendaForm(e = {}) {
+  const opts = AGENDA_CATS.map(c => `<option value="${esc(c.value)}">${esc(c.label)}</option>`).join('');
   return `
     <div class="form-grid" style="gap:1rem;">
       <div class="form-group"><label>Date *</label><input id="m-date" type="date" value="${esc(e.date||'')}" required></div>
       <div class="form-group form-span-2"><label>Titre *</label><input id="m-title" type="text" value="${esc(e.title||'')}" required></div>
       <div class="form-group form-span-2"><label>Description</label><textarea id="m-desc" rows="3">${esc(e.description||'')}</textarea></div>
-      <div class="form-group form-span-2"><label>Tags (appuyez Entrée pour ajouter)</label><div id="m-tags-container"></div></div>
+      <div class="form-group form-span-2">
+        <label>Catégorie / sous-rubrique</label>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <select id="m-quick-cat" style="flex:1;">${opts}</select>
+          <button type="button" class="btn-secondary" onclick="addQuickAgendaTag()" style="white-space:nowrap;padding:0.45rem 0.75rem;font-size:0.83rem;">+ Ajouter</button>
+        </div>
+        <div class="input-note">Sélectionnez une catégorie et cliquez « + Ajouter » pour l'insérer dans les tags.</div>
+      </div>
+      <div class="form-group form-span-2"><label>Tags libres (appuyez Entrée pour ajouter)</label><div id="m-tags-container"></div></div>
       <div class="form-group" style="flex-direction:row;align-items:center;gap:0.5rem;grid-column:span 2;">
         <input type="checkbox" id="m-past" ${e.isPast?'checked':''}>
         <label for="m-past" style="text-transform:none;font-size:0.85rem;color:var(--text);cursor:pointer;">Marquer comme événement passé</label>
@@ -752,6 +990,88 @@ async function loadGallery() {
     </div>`).join('');
 }
 
+// ─── MEMBERSHIP ───────────────────────────────────────────
+async function loadMembership() {
+  const m = await api('GET', '/api/membership').catch(() => ({}));
+  $('mbr-season').value  = m.season      || '';
+  $('mbr-droit').value   = m.droitEntree || '';
+  $('mbr-licence').value = m.licence     || '';
+  $('mbr-carnet').value  = m.carnetTir   || '';
+
+  const p = m.pdf || {};
+  $('pdf-clubName').value       = p.clubName       || '';
+  $('pdf-clubSubtitle').value   = p.clubSubtitle   || '';
+  $('pdf-clubAddress').value    = p.clubAddress    || '';
+  $('pdf-clubEmail').value      = p.clubEmail      || '';
+  $('pdf-formTitle').value      = p.formTitle      || '';
+  $('pdf-secIdentite').value    = p.sectionIdentite   || '';
+  $('pdf-secParrain').value     = p.sectionParrain    || '';
+  $('pdf-secEngagement').value  = p.sectionEngagement || '';
+  $('pdf-secDocuments').value   = p.sectionDocuments  || '';
+  $('pdf-engagementText').value = p.engagementText    || '';
+  $('pdf-documents').value      = Array.isArray(p.documents) ? p.documents.join('\n') : '';
+}
+
+$('save-membership').onclick = async () => {
+  const docsRaw = $('pdf-documents').value;
+  const docs    = docsRaw.split('\n').map(s => s.trim()).filter(Boolean);
+  const data = {
+    season:      $('mbr-season').value.trim(),
+    droitEntree: $('mbr-droit').value.trim(),
+    licence:     $('mbr-licence').value.trim(),
+    carnetTir:   $('mbr-carnet').value.trim(),
+    pdf: {
+      clubName:        $('pdf-clubName').value.trim(),
+      clubSubtitle:    $('pdf-clubSubtitle').value.trim(),
+      clubAddress:     $('pdf-clubAddress').value.trim(),
+      clubEmail:       $('pdf-clubEmail').value.trim(),
+      formTitle:       $('pdf-formTitle').value.trim(),
+      sectionIdentite:   $('pdf-secIdentite').value.trim(),
+      sectionParrain:    $('pdf-secParrain').value.trim(),
+      sectionEngagement: $('pdf-secEngagement').value.trim(),
+      sectionDocuments:  $('pdf-secDocuments').value.trim(),
+      engagementText:    $('pdf-engagementText').value.trim(),
+      documents:         docs
+    }
+  };
+  try { await api('PUT', '/api/admin/membership', data); toast('Fiche d\'adhésion mise à jour'); }
+  catch(e) { toast(e.message, false); }
+};
+
+// ─── CONTACTS ─────────────────────────────────────────────
+async function loadContacts() {
+  const s = await api('GET', '/api/settings').catch(() => ({}));
+  const c = s.contacts || {};
+  const st = s.sites || {};
+  $('contact-club-phone').value       = c.phone              || '';
+  $('contact-club-email').value       = c.email              || '';
+  $('contact-president-name').value   = c.president?.name    || '';
+  $('contact-president-phone').value  = c.president?.phone   || '';
+  $('contact-secretaire-name').value  = c.secretaire?.name   || '';
+  $('contact-secretaire-phone').value = c.secretaire?.phone  || '';
+  $('site3-street').value = st.site3?.street || '';
+  $('site3-city').value   = st.site3?.city   || '';
+  $('site4-street').value = st.site4?.street || '';
+  $('site4-city').value   = st.site4?.city   || '';
+}
+
+$('save-contacts').onclick = async () => {
+  const data = {
+    contacts: {
+      phone: $('contact-club-phone').value.trim(),
+      email: $('contact-club-email').value.trim(),
+      president:  { name: $('contact-president-name').value.trim(),  phone: $('contact-president-phone').value.trim()  },
+      secretaire: { name: $('contact-secretaire-name').value.trim(), phone: $('contact-secretaire-phone').value.trim() }
+    },
+    sites: {
+      site3: { street: $('site3-street').value.trim(), city: $('site3-city').value.trim() },
+      site4: { street: $('site4-street').value.trim(), city: $('site4-city').value.trim() }
+    }
+  };
+  try { await api('PUT', '/api/admin/settings', data); toast('Contacts mis à jour'); }
+  catch(e) { toast(e.message, false); }
+};
+
 // ─── HOURS ────────────────────────────────────────────────
 async function loadHours() {
   const s = await api('GET', '/api/settings').catch(() => ({}));
@@ -812,13 +1132,20 @@ window.deleteItem = async (resource, id, reload) => {
 };
 
 // ─── Loaders map ──────────────────────────────────────────
-const loaders = { notice: loadNotice, news: loadNews, agenda: loadAgenda, palmares: loadPalmares, gallery: loadGallery, hours: loadHours, account: loadAccount };
+const loaders = { notice: loadNotice, news: loadNews, agenda: loadAgenda, palmares: loadPalmares, gallery: loadGallery, hours: loadHours, membership: loadMembership, contacts: loadContacts, account: loadAccount };
 
 // ─── Init ─────────────────────────────────────────────────
 (async () => {
-  const ok = await checkAuth();
-  if (ok) { showPanel(); setupUpload(); loaders.notice(); }
-  else    { showLogin(); }
+  try {
+    const ok = await checkAuth();
+    if (ok) { showPanel(); setupUpload(); loaders.notice(); }
+    else    { showLogin(); }
+  } catch (e) {
+    console.error('Init error:', e);
+    showLogin();
+    $('login-error').textContent = e.message || 'Impossible de joindre le serveur.';
+    $('login-error').style.display = 'flex';
+  }
 })();
 </script>
 </body>

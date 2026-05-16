@@ -2,5 +2,15 @@
   "hours": {
     "lundi":  { "open": true, "morning": "08h00 – 12h00", "afternoon": "13h30 – 16h30" },
     "samedi": { "open": true, "morning": "08h00 – 12h00", "afternoon": "13h30 – 16h30" }
+  },
+  "contacts": {
+    "phone": "07 82 47 62 09",
+    "email": "ctpv@orange.fr",
+    "president": { "name": "Gilbert", "phone": "06 73 00 41 09" },
+    "secretaire": { "name": "Évelyne", "phone": "06 79 01 22 83" }
+  },
+  "sites": {
+    "site3": { "street": "Chemin de Tourris", "city": "83200 Le Revest-les-Eaux" },
+    "site4": { "street": "245 avenue des Meuniers", "city": "83200 Toulon" }
   }
 }

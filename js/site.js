@@ -34,7 +34,59 @@
       sessionStorage.setItem('ctpv-notice-dismissed', data.message);
     });
 
-    nav.insertAdjacentElement('afterend', el);
+    const content = document.querySelector('.page-content');
+    if (content) {
+      content.insertAdjacentElement('afterbegin', el);
+    } else {
+      nav.insertAdjacentElement('afterend', el);
+    }
+  }
+
+  // ─── Contacts injection ───────────────────────────────────
+  function initContacts(settings) {
+    if (!settings || !settings.contacts) return;
+    const c = settings.contacts;
+
+    function setContact(attr, text, href) {
+      document.querySelectorAll('[data-contact="' + attr + '"]').forEach(el => {
+        el.textContent = text;
+        if (href && el.tagName === 'A') el.href = href;
+      });
+    }
+
+    if (c.phone) setContact('club-phone', c.phone, 'tel:' + c.phone.replace(/\s/g, ''));
+    if (c.email) setContact('club-email', c.email, 'mailto:' + c.email);
+
+    if (c.president) {
+      setContact('president-name',  'Président (' + c.president.name + ')', null);
+      setContact('president-phone', c.president.phone, 'tel:' + c.president.phone.replace(/\s/g, ''));
+    }
+    if (c.secretaire) {
+      setContact('secretaire-name',  'Secrétaire (' + c.secretaire.name + ')', null);
+      setContact('secretaire-phone', c.secretaire.phone, 'tel:' + c.secretaire.phone.replace(/\s/g, ''));
+    }
+  }
+
+  // ─── Sites injection ─────────────────────────────────────
+  function initSites(settings) {
+    if (!settings || !settings.sites) return;
+    const { site3, site4 } = settings.sites;
+
+    function setSlot(name, htmlVal, textVal) {
+      document.querySelectorAll('[data-slot="' + name + '"]').forEach(el => {
+        el.innerHTML = htmlVal;
+      });
+      document.querySelectorAll('[data-slot="' + name + '-inline"]').forEach(el => {
+        el.textContent = textVal;
+      });
+    }
+
+    if (site3) setSlot('site3-address',
+      escHtml(site3.street || '') + '<br>' + escHtml(site3.city || ''),
+      (site3.street || '') + (site3.city ? ', ' + site3.city : ''));
+    if (site4) setSlot('site4-address',
+      escHtml(site4.street || '') + '<br>' + escHtml(site4.city || ''),
+      (site4.street || '') + (site4.city ? ', ' + site4.city : ''));
   }
 
   // ─── Hours injection ──────────────────────────────────────
@@ -216,7 +268,9 @@
     Promise.all([get('/api/notice'), get('/api/settings')])
       .then(([notice, settings]) => {
         initNotice(notice);
+        initSites(settings);
         initHours(settings);
+        initContacts(settings);
       })
       .catch(() => {}); // silently ignore
 

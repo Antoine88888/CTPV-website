@@ -242,13 +242,19 @@ app.get('/api/membership-form', async (req, res) => {
        .text(clubAddress + '  |  ' + clubEmail, L + 64, y + 40, { width: W - 130, lineBreak: false });
 
     const bx = L + W - 60, by = y + 4;
-    try {
-      const logoRes = await fetch('https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png');
-      if (logoRes.ok) {
-        const buf = Buffer.from(await logoRes.arrayBuffer());
-        doc.image(buf, bx, by, { width: 60, height: 30, fit: [60, 30], align: 'center', valign: 'center' });
-      } else { throw new Error('fetch failed'); }
-    } catch {
+    const localLogo = path.join(DATA, 'logo-fftir.png');
+    let logoBuf = null;
+    if (fs.existsSync(localLogo)) {
+      logoBuf = fs.readFileSync(localLogo);
+    } else {
+      try {
+        const r = await fetch('https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png');
+        if (r.ok) logoBuf = Buffer.from(await r.arrayBuffer());
+      } catch {}
+    }
+    if (logoBuf) {
+      doc.image(logoBuf, bx, by, { width: 60, height: 30, fit: [60, 30], align: 'center', valign: 'center' });
+    } else {
       doc.roundedRect(bx, by, 60, 30, 4).fillColor(DARK).fill();
       doc.fontSize(11).fillColor(GOLD).font('Helvetica-Bold')
          .text('FFTIR', bx, by + 5, { width: 60, align: 'center', lineBreak: false });

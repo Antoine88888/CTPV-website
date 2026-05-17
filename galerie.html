@@ -16,21 +16,26 @@
       z-index: 9999;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 1.5rem;
+      overflow-y: auto;
     }
     .lightbox.open { display: flex; }
     .lightbox-inner {
       position: relative;
       max-width: 860px;
+      max-height: calc(100vh - 3rem);
       width: 100%;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
     }
     .lightbox-close {
       position: absolute;
-      top: 1rem; right: 1rem;
+      top: 0.75rem; right: 0.75rem;
       background: rgba(0,0,0,0.65);
       border: 1px solid var(--border);
       color: var(--white);
@@ -45,13 +50,17 @@
     .lightbox-close:hover { background: var(--danger); }
     .lightbox-img {
       width: 100%;
-      max-height: 520px;
-      object-fit: cover;
+      max-height: 65vh;
+      object-fit: contain;
       display: block;
+      background: #000;
+      flex-shrink: 1;
+      min-height: 0;
     }
     .lightbox-caption {
       padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--border);
+      flex-shrink: 0;
     }
     .lightbox-caption h4 { font-size: 1.1rem; margin-bottom: 0.25rem; }
     .lightbox-caption p  { font-size: 0.85rem; color: var(--muted); }
@@ -186,13 +195,13 @@
     <div class="footer-logos-title">Affiliations officielles</div>
     <div class="footer-logos-list">
       <a href="https://www.fftir.fr" target="_blank" rel="noopener" title="Fédération Française de Tir">
-        <img src="https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
+        <img src="/images/logos/logo-fftir.png" alt="FFTIR" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>FFTIR</span>'">
       </a>
       <a href="https://www.ipsc.org" target="_blank" rel="noopener" title="International Practical Shooting Confederation">
-        <img src="https://www.ipsc.org/wp-content/uploads/2020/09/IPSC-Logo.png" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
+        <img src="/images/logos/logo-ipsc.svg" alt="IPSC" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>IPSC</span>'">
       </a>
       <a href="https://www.liguetiropaca.com" target="_blank" rel="noopener" title="Ligue de Tir PACA">
-        <img src="https://www.liguetiropaca.com/wp-content/uploads/logo-ligue-paca.png" alt="Ligue PACA" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>Ligue PACA</span>'">
+        <img src="/images/logos/logo-ligue-paca.svg" alt="Ligue PACA" class="footer-logo-img" onerror="this.outerHTML='<span class=\'affil-badge\'>Ligue PACA</span>'">
       </a>
     </div>
   </div>

@@ -1,96 +1,195 @@
 [
   {
-    "id": "id_gal_1",
-    "url": "https://picsum.photos/seed/ctpv-stand1/600/400",
+    "id": "id_gal_s25_1",
+    "url": "https://www.ctpv.fr/images/photos%2025m/stand25m.JPG",
     "filename": null,
-    "title": "Stand longue distance – Le Revest",
-    "description": "Vue générale du stand CTPV 3 au Revest-les-Eaux.",
+    "title": "Stand 25 m – Vue générale",
+    "description": "Les pas de tir à 25 mètres du stand pistolet.",
     "category": "stands",
     "isTall": false
   },
   {
-    "id": "id_gal_2",
-    "url": "https://picsum.photos/seed/ctpv-comp1/600/800",
+    "id": "id_gal_s25_2",
+    "url": "https://www.ctpv.fr/images/photos%2025m/stand25m5.JPG",
     "filename": null,
-    "title": "Championnat régional PACA",
-    "description": "Nos tireurs lors du championnat régional.",
-    "category": "competitions",
+    "title": "Stand 25 m – Couloir de tir",
+    "description": "Couloir de tir pistolet à 25 mètres, équipements et cibles en place.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s25_3",
+    "url": "https://www.ctpv.fr/images/photos%2025m/stand1pierre2.JPG",
+    "filename": null,
+    "title": "Pas de tir n°1 – Stand 25 m",
+    "description": "Tireur en position sur le pas de tir n°1 à 25 mètres.",
+    "category": "stands",
     "isTall": true
   },
   {
-    "id": "id_gal_3",
+    "id": "id_gal_s25_4",
+    "url": "https://www.ctpv.fr/images/photos%2025m/stand1pierre1.JPG",
+    "filename": null,
+    "title": "Stand 25 m – Précision",
+    "description": "Séance de tir de précision pistolet à 25 mètres.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s10_1",
+    "url": "https://www.ctpv.fr/images/photos%2010m/stand%207%20italie4.JPG",
+    "filename": null,
+    "title": "Stand 10 m – Tir air comprimé",
+    "description": "Tireurs sur le stand 10 mètres à l'air comprimé.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s10_2",
+    "url": "https://www.ctpv.fr/images/photos%2010m/stand%207%20italie6.JPG",
+    "filename": null,
+    "title": "Stand 10 m – Séance d'entraînement",
+    "description": "Entraînement sur le stand 10 mètres.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s10_3",
+    "url": "https://www.ctpv.fr/images/photos%2010m/stand7titi1.JPG",
+    "filename": null,
+    "title": "Stand 10 m – Postes de tir",
+    "description": "Les postes de tir du stand 10 mètres.",
+    "category": "stands",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_s4_1",
+    "url": "https://www.ctpv.fr/images/stand4/stand4camion.JPG",
+    "filename": null,
+    "title": "Parcours de tir en situation",
+    "description": "Décors et mise en situation sur le parcours de tir IPSC.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s4_2",
+    "url": "https://www.ctpv.fr/images/stand4/stand4%20italie%20sandra.JPG",
+    "filename": null,
+    "title": "Parcours IPSC – Tireur en action",
+    "description": "Compétiteur engageant les cibles sur le parcours IPSC.",
+    "category": "competition",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s5_1",
+    "url": "https://www.ctpv.fr/images/stand5/20.JPG",
+    "filename": null,
+    "title": "Salle IPSC – Parcours n°2",
+    "description": "Salle de 200 m² dédiée au tir sportif de vitesse.",
+    "category": "stands",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_s5_2",
+    "url": "https://www.ctpv.fr/images/stand5/21.JPG",
+    "filename": null,
+    "title": "Salle IPSC – Vue d'ensemble",
+    "description": "Vue générale de la salle d'entraînement IPSC.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s5_3",
+    "url": "https://www.ctpv.fr/images/stand5/18.JPG",
+    "filename": null,
+    "title": "Salle IPSC – Décors",
+    "description": "Décors et obstacles pour les parcours de tir en situation.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s89_1",
+    "url": "https://www.ctpv.fr/images/stand8-9/CIMG0576.JPG",
+    "filename": null,
+    "title": "Stand carabine – Aménagement",
+    "description": "Travaux d'aménagement du stand carabine longue distance.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_s89_2",
+    "url": "https://www.ctpv.fr/images/stand8-9/stand%20carabine1.JPG",
+    "filename": null,
+    "title": "Stand carabine – Vue générale",
+    "description": "Le stand carabine en configuration compétition.",
+    "category": "stands",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_s89_3",
+    "url": "https://www.ctpv.fr/images/stand8-9/stand%20carabine2.JPG",
+    "filename": null,
+    "title": "Stand carabine – Couloir",
+    "description": "Couloir de tir du stand carabine.",
+    "category": "stands",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_gongs_1",
+    "url": "https://www.ctpv.fr/images/stand3/gongs/concours%2038%20357%2028%20oct%2006%20gongs_0001.jpg",
+    "filename": null,
+    "title": "Concours gongs – .357 Magnum",
+    "description": "Compétition sur gongs métalliques, calibres .38 et .357.",
+    "category": "competition",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_fspn_1",
+    "url": "https://www.ctpv.fr/images/photos%2025m/concours%2038%20357%2028%20oct%2006%20024.jpg",
+    "filename": null,
+    "title": "Concours FSPN – Situation n°1",
+    "description": "Concours police FSPN, tir en situation sur stand 25 m.",
+    "category": "competition",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_fspn_2",
+    "url": "https://www.ctpv.fr/images/stand2/3.JPG",
+    "filename": null,
+    "title": "Concours FSPN – Situation n°2",
+    "description": "Épreuve FSPN sur le stand n°2 du parcours.",
+    "category": "competition",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_fspn_3",
+    "url": "https://www.ctpv.fr/images/stand4/7.JPG",
+    "filename": null,
+    "title": "Concours FSPN – Situation n°4",
+    "description": "Parcours de tir en situation n°4, concours police.",
+    "category": "competition",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_vie_1",
     "url": "https://picsum.photos/seed/ctpv-vie1/600/400",
     "filename": null,
     "title": "Séance du samedi matin",
-    "description": "Les membres réunis sur le stand de Toulon.",
+    "description": "Les membres réunis pour la séance hebdomadaire.",
     "category": "vie",
     "isTall": false
   },
   {
-    "id": "id_gal_4",
-    "url": "https://picsum.photos/seed/ctpv-form1/600/400",
-    "filename": null,
-    "title": "Initiation débutants",
-    "description": "Cours d'initiation encadré par nos moniteurs agréés.",
-    "category": "formation",
-    "isTall": false
-  },
-  {
-    "id": "id_gal_5",
-    "url": "https://picsum.photos/seed/ctpv-stand2/600/800",
-    "filename": null,
-    "title": "Couloir de tir 300m",
-    "description": "Le couloir longue distance du site du Revest.",
-    "category": "stands",
-    "isTall": true
-  },
-  {
-    "id": "id_gal_6",
-    "url": "https://picsum.photos/seed/ctpv-comp2/600/400",
-    "filename": null,
-    "title": "Podium – Palmarès 2025",
-    "description": "Remise des médailles au championnat PACA 2025.",
-    "category": "competitions",
-    "isTall": false
-  },
-  {
-    "id": "id_gal_7",
+    "id": "id_gal_vie_2",
     "url": "https://picsum.photos/seed/ctpv-vie2/600/400",
     "filename": null,
-    "title": "Assemblée générale 2025",
+    "title": "Assemblée générale",
     "description": "Réunion annuelle du club, bilan et projets.",
     "category": "vie",
     "isTall": false
   },
   {
-    "id": "id_gal_8",
-    "url": "https://picsum.photos/seed/ctpv-form2/600/800",
-    "filename": null,
-    "title": "Formation TAR",
-    "description": "Stage de perfectionnement en Tir aux armes Réglementaires.",
-    "category": "formation",
-    "isTall": true
-  },
-  {
-    "id": "id_gal_9",
-    "url": "https://picsum.photos/seed/ctpv-stand3/600/400",
-    "filename": null,
-    "title": "Stand de Toulon – Vue d'ensemble",
-    "description": "Le stand CTPV 4 avenue des Meuniers, Toulon.",
-    "category": "stands",
-    "isTall": false
-  },
-  {
-    "id": "id_gal_10",
-    "url": "https://picsum.photos/seed/ctpv-comp3/600/400",
-    "filename": null,
-    "title": "Compétition longue distance",
-    "description": "Épreuve TLD (300m) sur le stand du Revest.",
-    "category": "competitions",
-    "isTall": false
-  },
-  {
-    "id": "id_gal_11",
+    "id": "id_gal_vie_3",
     "url": "https://picsum.photos/seed/ctpv-vie3/600/800",
     "filename": null,
     "title": "Journée portes ouvertes",
@@ -99,10 +198,28 @@
     "isTall": true
   },
   {
-    "id": "id_gal_12",
+    "id": "id_gal_form_1",
+    "url": "https://picsum.photos/seed/ctpv-form1/600/400",
+    "filename": null,
+    "title": "École de Tir – Initiation",
+    "description": "Cours d'initiation encadré par nos moniteurs diplômés FFTir, dès 8 ans.",
+    "category": "formation",
+    "isTall": false
+  },
+  {
+    "id": "id_gal_form_2",
+    "url": "https://picsum.photos/seed/ctpv-form2/600/800",
+    "filename": null,
+    "title": "Formation TAR",
+    "description": "Stage de perfectionnement en Tir aux armes réglementaires.",
+    "category": "formation",
+    "isTall": true
+  },
+  {
+    "id": "id_gal_form_3",
     "url": "https://picsum.photos/seed/ctpv-form3/600/400",
     "filename": null,
-    "title": "Cours pistol 25m",
+    "title": "Cours pistolet 25 m",
     "description": "Initiation au pistolet 25 mètres pour les nouveaux licenciés.",
     "category": "formation",
     "isTall": false

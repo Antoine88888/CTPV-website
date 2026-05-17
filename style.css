@@ -156,6 +156,8 @@ h3 { font-size: 1.3rem; font-weight: 600; }
 .navbar-brand .logo-icon {
   width: 42px;
   height: 42px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 .navbar-brand .brand-text { font-family: 'Rajdhani', sans-serif; }
 .navbar-brand .brand-title {

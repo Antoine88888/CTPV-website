@@ -62,10 +62,26 @@
 
       <!-- Liste des événements -->
       <div>
-        <div class="section-header" style="text-align:left;margin-bottom:1.5rem;">
+        <div class="section-header" style="text-align:left;margin-bottom:1rem;">
           <span class="section-label">À venir</span>
           <h2>Événements 2026</h2>
           <div class="section-divider" style="margin:0.75rem 0 0;"></div>
+        </div>
+
+        <!-- Filtres par catégorie -->
+        <div class="gallery-filter" style="justify-content:flex-start;margin-bottom:1.5rem;">
+          <button class="filter-btn agenda-filter-btn active" data-cat="all">
+            <i class="bi bi-grid-3x3-gap-fill"></i> Tout
+          </button>
+          <button class="filter-btn agenda-filter-btn" data-cat="competition">
+            <i class="bi bi-trophy-fill"></i> Compétitions
+          </button>
+          <button class="filter-btn agenda-filter-btn" data-cat="entrainement">
+            <i class="bi bi-crosshair"></i> Entraînements
+          </button>
+          <button class="filter-btn agenda-filter-btn" data-cat="club">
+            <i class="bi bi-people-fill"></i> Vie du club
+          </button>
         </div>
 
         <div class="agenda-list" id="agenda-list">

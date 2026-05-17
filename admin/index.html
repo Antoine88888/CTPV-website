@@ -794,20 +794,38 @@ window.addQuickAgendaTag = function() {
 
 function agendaForm(e = {}) {
   const opts = AGENDA_CATS.map(c => `<option value="${esc(c.value)}">${esc(c.label)}</option>`).join('');
+  const catSel = (val, label) => `<option value="${val}"${(e.category||'')=== val?' selected':''}>${label}</option>`;
   return `
     <div class="form-grid" style="gap:1rem;">
       <div class="form-group"><label>Date *</label><input id="m-date" type="date" value="${esc(e.date||'')}" required></div>
       <div class="form-group form-span-2"><label>Titre *</label><input id="m-title" type="text" value="${esc(e.title||'')}" required></div>
+      <div class="form-group">
+        <label>Catégorie (filtre public)</label>
+        <select id="m-category">
+          <option value="">— Sans catégorie —</option>
+          ${catSel('competition','Compétition')}
+          ${catSel('entrainement','Entraînement')}
+          ${catSel('club','Vie du club / Club')}
+        </select>
+      </div>
       <div class="form-group form-span-2"><label>Description</label><textarea id="m-desc" rows="3">${esc(e.description||'')}</textarea></div>
       <div class="form-group form-span-2">
-        <label>Catégorie / sous-rubrique</label>
+        <label>Catégorie / sous-rubrique (tags)</label>
         <div style="display:flex;gap:0.5rem;align-items:center;">
           <select id="m-quick-cat" style="flex:1;">${opts}</select>
           <button type="button" class="btn-secondary" onclick="addQuickAgendaTag()" style="white-space:nowrap;padding:0.45rem 0.75rem;font-size:0.83rem;">+ Ajouter</button>
         </div>
-        <div class="input-note">Sélectionnez une catégorie et cliquez « + Ajouter » pour l'insérer dans les tags.</div>
+        <div class="input-note">Sélectionnez et cliquez « + Ajouter » pour insérer dans les tags.</div>
       </div>
       <div class="form-group form-span-2"><label>Tags libres (appuyez Entrée pour ajouter)</label><div id="m-tags-container"></div></div>
+      <div class="form-group form-span-2">
+        <label>Fichiers joints à télécharger</label>
+        <div id="m-files-list" style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.5rem;"></div>
+        <button type="button" class="btn-secondary" onclick="addAgendaFileRow()" style="font-size:0.83rem;padding:0.35rem 0.75rem;">
+          <i class="bi bi-plus-lg"></i> Ajouter un fichier
+        </button>
+        <div class="input-note">Nom affiché + URL ou chemin du fichier (ex : /uploads/reglement.pdf)</div>
+      </div>
       <div class="form-group" style="flex-direction:row;align-items:center;gap:0.5rem;grid-column:span 2;">
         <input type="checkbox" id="m-past" ${e.isPast?'checked':''}>
         <label for="m-past" style="text-transform:none;font-size:0.85rem;color:var(--text);cursor:pointer;">Marquer comme événement passé</label>
@@ -815,11 +833,37 @@ function agendaForm(e = {}) {
     </div>`;
 }
 
+window.addAgendaFileRow = function(file = {}) {
+  const row = document.createElement('div');
+  row.style.cssText = 'display:grid;grid-template-columns:1fr 2fr auto;gap:0.4rem;align-items:center;';
+  row.innerHTML =
+    `<input type="text" placeholder="Nom (ex : Règlement)" value="${esc(file.name||'')}" class="agenda-file-name" style="font-size:0.83rem;">` +
+    `<input type="text" placeholder="URL (/uploads/fichier.pdf)" value="${esc(file.url||'')}" class="agenda-file-url" style="font-size:0.83rem;">` +
+    `<button type="button" class="btn-icon btn-danger" onclick="this.parentElement.remove()" title="Supprimer"><i class="bi bi-trash-fill"></i></button>`;
+  $('m-files-list').appendChild(row);
+};
+
+function getAgendaFiles() {
+  return Array.from(document.querySelectorAll('#m-files-list > div')).map(row => ({
+    name: row.querySelector('.agenda-file-name').value.trim(),
+    url:  row.querySelector('.agenda-file-url').value.trim()
+  })).filter(f => f.name && f.url);
+}
+
 $('add-agenda-btn').onclick = () => {
   openModal('Ajouter un événement', agendaForm(), async () => {
     initTagInput('m-tags-container');
-    const tags = getTags('m-tags-container');
-    const data = { date: $('m-date').value, title: $('m-title').value.trim(), description: $('m-desc').value.trim(), tags, tagColors: tags.map(() => ''), isPast: $('m-past').checked };
+    const tags  = getTags('m-tags-container');
+    const files = getAgendaFiles();
+    const data  = {
+      date: $('m-date').value,
+      title: $('m-title').value.trim(),
+      description: $('m-desc').value.trim(),
+      category: $('m-category').value,
+      tags, tagColors: tags.map(() => ''),
+      isPast: $('m-past').checked,
+      files
+    };
     if (!data.date || !data.title) throw new Error('La date et le titre sont obligatoires');
     await api('POST', '/api/admin/agenda', data);
     toast('Événement ajouté'); loadAgenda();
@@ -832,13 +876,26 @@ window.editAgenda = async id => {
   const e = items.find(x => x.id === id);
   if (!e) return;
   openModal('Modifier l\'événement', agendaForm(e), async () => {
-    const tags = getTags('m-tags-container');
-    const data = { date: $('m-date').value, title: $('m-title').value.trim(), description: $('m-desc').value.trim(), tags, tagColors: (e.tagColors||[]).slice(0,tags.length), isPast: $('m-past').checked };
+    const tags  = getTags('m-tags-container');
+    const files = getAgendaFiles();
+    const data  = {
+      date: $('m-date').value,
+      title: $('m-title').value.trim(),
+      description: $('m-desc').value.trim(),
+      category: $('m-category').value,
+      tags, tagColors: (e.tagColors||[]).slice(0, tags.length),
+      isPast: $('m-past').checked,
+      files
+    };
     if (!data.date || !data.title) throw new Error('La date et le titre sont obligatoires');
     await api('PUT', '/api/admin/agenda/' + id, data);
     toast('Événement mis à jour'); loadAgenda();
   });
-  setTimeout(() => { initTagInput('m-tags-container'); setTags('m-tags-container', e.tags); }, 50);
+  setTimeout(() => {
+    initTagInput('m-tags-container');
+    setTags('m-tags-container', e.tags);
+    (e.files || []).forEach(f => addAgendaFileRow(f));
+  }, 50);
 };
 
 // ─── PALMARÈS ─────────────────────────────────────────────

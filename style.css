@@ -1141,6 +1141,15 @@ body.page-out {
 .agenda-event-title { font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin: 0 0 0.3rem; }
 .agenda-event-desc  { font-size: 0.83rem; color: var(--muted); margin: 0 0 0.6rem; line-height: 1.6; }
 .agenda-event-tags  { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.agenda-files { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.agenda-file-link {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.78rem; color: var(--gold); text-decoration: none;
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 5px; padding: 0.25rem 0.6rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.agenda-file-link:hover { background: rgba(201,168,76,0.18); border-color: var(--gold); }
 .agenda-sidebar { position: sticky; top: calc(var(--nav-h) + 1.5rem); }
 .agenda-sidebar-card {
   background: var(--card);

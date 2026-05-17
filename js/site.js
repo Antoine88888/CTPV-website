@@ -166,16 +166,21 @@
       const tags = (e.tags || []).map((t, i) =>
         `<span class="badge${(e.tagColors||[])[i]==='gold'?' gold':''}">${escHtml(t)}</span>`
       ).join('');
+      const files = (e.files || []).filter(f => f.name && f.url).map(f =>
+        `<a href="${escHtml(f.url)}" class="agenda-file-link" download target="_blank" rel="noopener">` +
+        `<i class="bi bi-file-earmark-arrow-down-fill"></i> ${escHtml(f.name)}</a>`
+      ).join('');
       return `
         <div class="agenda-event${e.isPast ? ' past' : ''}">
           <div class="agenda-date-box"${e.isPast?' style="opacity:0.7;"':''}>
             <div class="agenda-date-day">${d.day}</div>
             <div class="agenda-date-month">${d.month}</div>
           </div>
-          <div>
+          <div style="flex:1;min-width:0;">
             <h3 class="agenda-event-title">${escHtml(e.title)}</h3>
             <p class="agenda-event-desc">${escHtml(e.description || '')}</p>
             <div class="agenda-event-tags">${tags}</div>
+            ${files ? `<div class="agenda-files">${files}</div>` : ''}
           </div>
         </div>`;
     }
@@ -187,6 +192,21 @@
       html += past.map(eventHTML).join('');
     }
     list.innerHTML = html;
+  }
+
+  // ─── Filter: Agenda ───────────────────────────────────────
+  function initAgendaFilter(listEl, allItems) {
+    const btns = document.querySelectorAll('.agenda-filter-btn');
+    if (!btns.length) return;
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        const filtered = cat === 'all' ? allItems : allItems.filter(e => e.category === cat);
+        renderAgenda(listEl, filtered);
+      });
+    });
   }
 
   // ─── Render: Palmarès ─────────────────────────────────────
@@ -287,7 +307,10 @@
       const list = document.getElementById('agenda-list');
       if (list) {
         setLoading(list);
-        get('/api/agenda').then(items => renderAgenda(list, items)).catch(() => setError(list, 'Impossible de charger l\'agenda.'));
+        get('/api/agenda').then(items => {
+          renderAgenda(list, items);
+          initAgendaFilter(list, items);
+        }).catch(() => setError(list, 'Impossible de charger l\'agenda.'));
       }
     }
 

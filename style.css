@@ -470,7 +470,7 @@ h3 { font-size: 1.3rem; font-weight: 600; }
   transition: border-color 0.25s, transform 0.25s;
 }
 .disc-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-.disc-icon { font-size: 2.2rem; margin-bottom: 1rem; color: var(--gold); line-height: 1; }
+.disc-icon { font-size: 2.2rem; margin-bottom: 1rem; color: var(--gold); line-height: 1; display: flex; justify-content: center; align-items: center; }
 .disc-icon .bi { font-size: 2.2rem; color: var(--gold); }
 .disc-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
 .disc-card p { font-size: 0.83rem; color: var(--muted); }
